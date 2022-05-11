@@ -1,0 +1,16 @@
+/* 自定义字体引入 */
+
+@font-face {
+    font-family:Sora-Medium;
+    src: url(../font/Sora-Medium.ttf) format("truetype");
+  }
+  
+  @font-face {
+    font-family: TypoPRO-Montserrat-BlackItalic;
+    src: url(../font/TypoPRO-Montserrat-BlackItalic.woff.ttf) format("truetype");
+  }
+  
+  @font-face {
+    font-family:  Sora-Regular;
+    src: url(../font/Sora-VariableFont_wght.ttf) format("truetype");
+  }

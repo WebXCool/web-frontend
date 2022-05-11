@@ -1,0 +1,39 @@
+@keyframes bounceInLeft {
+  from, 60%, 75%, 90%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+
+  0% {
+    opacity: 0;
+    transform: translate3d(torem(-3000), 0, 0);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translate3d(torem(25), 0, 0);
+  }
+
+  75% {
+    transform: translate3d(torem(-10), 0, 0);
+  }
+
+  90% {
+    transform: translate3d(torem(5), 0, 0);
+  }
+
+  to {
+    transform: none;
+  }
+}
+
+@keyframes bounceOutLeft {
+  20% {
+    opacity: 1;
+    transform: translate3d(torem(20), 0, 0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(torem(-2000), 0, 0);
+  }
+}
