@@ -88,14 +88,16 @@ export default {
   mounted () { },
   methods: {
     menuSelect (index, indexPath) {
-      return;
+      if (index == '3') {
+        return;
+      }
       let path = "/official" + this.paths[index];
       // if (index == "6") {
       //   this.logout();
       //   return;
       // }
       if (index == "2") {
-        // window.open("https://ipland.gitbook.io/ipland-eth/")
+        window.open("https://whitepaper.webx.cool/")
         return
       }
 

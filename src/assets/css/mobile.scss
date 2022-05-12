@@ -24,7 +24,9 @@
         }
 }
 @media screen and (max-width:768px) {
-
+  .div_page_index > .body > .top .top-content > .img-bottom{
+    display: none;
+  }
     body{
       .div_page_index{
         display: block;
