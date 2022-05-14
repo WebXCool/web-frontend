@@ -1,18 +1,19 @@
 <template>
-  <nav id="MobileMenu"
-       class="nav_menus">
+  <nav id="MobileMenu" class="nav_menus">
     <!-- <div class="div_logo" @click="$router.push({path:'/'})" v-if="isPC">
             <i class="iconfont iconlogo-blue" style="font-size:torem(30);color:#fff;" ></i>
             <span style="color:#fff;margin-left:torem(6);">iplandetwork</span>
         </div> -->
-    <el-menu :default-active="activeMenuIndex"
-             class="head_nav_menu"
-             background-color="transparent"
-             text-color="#323E50"
-             active-text-color="#fff"
-             :default-openeds="defaultOpeneds"
-             @select="menuSelect"
-             :mode="mode">
+    <el-menu
+      :default-active="activeMenuIndex"
+      class="head_nav_menu"
+      background-color="transparent"
+      text-color="#323E50"
+      active-text-color="#fff"
+      :default-openeds="defaultOpeneds"
+      @select="menuSelect"
+      :mode="mode"
+    >
       <el-menu-item index="0">
         <div class="item">
           <div class="title">Home</div>
@@ -26,8 +27,7 @@
         </div>
       </el-menu-item>
       <el-menu-item index="2">
-        <div class="item"
-             @click.stop="openUrl">
+        <div class="item" @click.stop="openUrl">
           <div class="title">Whitepaper</div>
           <div class="intro">We have a financial community</div>
         </div>
@@ -88,16 +88,14 @@ export default {
   mounted () { },
   methods: {
     menuSelect (index, indexPath) {
-      if (index == '3') {
-        return;
-      }
+      return;
       let path = "/official" + this.paths[index];
       // if (index == "6") {
       //   this.logout();
       //   return;
       // }
       if (index == "2") {
-        window.open("https://whitepaper.webx.cool/")
+        // window.open("https://ipland.gitbook.io/ipland-eth/")
         return
       }
 
@@ -128,7 +126,7 @@ export default {
   }
   .el-menu--horizontal > .el-menu-item a,
   .el-menu--horizontal > .el-menu-item a:hover {
-    color: $theme-color;
+    color: #7750c6;
     font-size: torem(15);
   }
   > .div_logo {

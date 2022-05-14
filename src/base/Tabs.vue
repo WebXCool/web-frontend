@@ -1,9 +1,11 @@
 <template>
   <ul class="ul_tabs">
-    <li :class="{ active: activeIndex == index }"
-        v-for="(item, index) in tabs"
-        @click="tabClick(index)"
-        :key="index">
+    <li
+      :class="{ active: activeIndex == index }"
+      v-for="(item, index) in tabs"
+      @click="tabClick(index)"
+      :key="index"
+    >
       {{ item.text }}
     </li>
   </ul>
@@ -46,7 +48,7 @@ export default {
     height: 0.6rem;
   }
   li.active {
-    border-color: $theme-color;
+    border-color: #7750c6;
     color: #fff;
   }
 }
