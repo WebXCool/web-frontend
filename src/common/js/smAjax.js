@@ -35,6 +35,9 @@ export default ({ api = "", data = {}, method = "get", dataType = "json", toast 
             "Content-Type": "application/json"
           };
           break
+        case "webx":
+          url = config.webx_api_url + api;
+          break
       }
     }
 

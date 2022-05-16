@@ -1,0 +1,55 @@
+.page-home{
+    .rank-xdrop-container{
+        position: relative;
+        display: inline-block;
+        margin-top: 1.2rem;
+    }
+    .menu-rank-xdrop{
+        $rem: torem(56);
+        position: absolute;
+        top: (-$rem);
+        left: 0.3rem;
+        .div-border{
+            display: none;
+        }
+        .OMenu {
+            width: torem(400);
+            height: torem(56);
+        }
+        .item{
+            flex: 1;
+            position: relative;
+            width: torem(200);
+            height: torem(56);
+            margin: 0;
+            border-radius: torem(16) torem(16) 0px 0px;
+            border-top: torem(1) solid rgba(255, 255, 255, 0.4);
+            border-bottom: 0 !important;
+            border-left: torem(1) solid rgba(255, 255, 255, 0.4);
+            border-right: torem(1) solid rgba(255, 255, 255, 0.4);
+            .btn{
+                color: #7B7C8A;
+                font-size: torem(22);
+            }
+            &.active{
+                // border-color: transparent;
+                background: #634DEF linear-gradient(229deg, #1EDEFF 0%, rgba(95, 88, 241, 0.96) 69%, #654CF0 100%);
+                .btn{
+                    color: #FFFFFF;
+                }
+            }
+        }
+    }
+    .xdrop-content{
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        padding-top: 0.3rem !important;
+    }
+    .xdrop-list{
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        padding: 0 0.12rem;
+    }
+}

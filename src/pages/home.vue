@@ -194,50 +194,80 @@
         <div class="tab">
           <OMenu :menus="menus"></OMenu>
         </div>
-        <div class="list bg-cover"
-             v-loading="loading"
-             element-loading-spinner="el-icon-loading"
-             element-loading-background="rgba(0, 0, 0, 0.8)">
-          <div class="item"
-               v-for="(item, index) in tableData"
-               :key="item.id">
-            <div class="left">
-              <span class="seq"
-                    :class="{ 'bg-cover': item.seq < 4 }">
-                {{ item.seq }}
-              </span>
-              <a :href="`https://twitter.com/${item.userName}`"
-                 target="_bank">
-                <Avatar :url="item.twitterAvatar"></Avatar>
-                <span>
-                  {{ item.userName }}
-                </span>
-                <img class="circle"
-                     v-if="index % 2"
-                     src="../assets/img/ranking-list/ranking-list_status_off-line@2x.png" />
-                <img v-else
-                     class="circle"
-                     src="../assets/img/ranking-list/ranking-list_status_online@2x.png" />
-
-                <!-- <div class="circle"
-                     :style="{ background: index % 2 ? '#58FF93' : '#58FF93' }"></div> -->
-              </a>
-            </div>
-
-            <div class="right flex_center">
-              <!-- <span class="span-price">$ {{ item.coinPrice }}</span>
-              <img src="../assets/img/buy_list/buy.png"
-                   @click="$develop" />
-              <img src="../assets/img/buy_list/farm.png"
-                   @click="$develop" /> -->
-
-              <img src="../assets/img/ranking-list/ranking list_icon_heat@2x.png" />
+        <div class="rank-xdrop-container">
+          <div class="menu-rank-xdrop" >
+            <OMenu
+              :menus="menusRankOrXdrop"
+              @click="toggleRankOrXdrop"></OMenu>
+          </div>
+          <div class="list bg-cover xdrop-content"
+            v-if="rankOrXdrop === 0"
+            v-loading="loading"
+            element-loading-spinner="el-icon-loading"
+            element-loading-background="rgba(0, 0, 0, 0.8)"
+          > 
+            <div class="xdrop-list">
+              <xdrop-item
+                v-for="item in xdropList"
+                :key="item.id"
+                :drop-item="item"
+              />
             </div>
           </div>
-          <empty v-if="!tableData.length" />
-        </div>
+          <div class="list bg-cover"
+            v-if="rankOrXdrop === 1"
+            v-loading="loading"
+            element-loading-spinner="el-icon-loading"
+            element-loading-background="rgba(0, 0, 0, 0.8)">
+            <div class="item"
+                v-for="(item, index) in tableData"
+                :key="item.id">
+              <div class="left">
+                <span class="seq"
+                      :class="{ 'bg-cover': item.seq < 4 }">
+                  {{ item.seq }}
+                </span>
+                <a :href="`https://twitter.com/${item.userName}`"
+                  target="_bank">
+                  <Avatar :url="item.twitterAvatar"></Avatar>
+                  <span>
+                    {{ item.userName }}
+                  </span>
+                  <img class="circle"
+                      v-if="index % 2"
+                      src="../assets/img/ranking-list/ranking-list_status_off-line@2x.png" />
+                  <img v-else
+                      class="circle"
+                      src="../assets/img/ranking-list/ranking-list_status_online@2x.png" />
 
-        <div class="footer">
+                  <!-- <div class="circle"
+                      :style="{ background: index % 2 ? '#58FF93' : '#58FF93' }"></div> -->
+                </a>
+              </div>
+
+              <div class="right flex_center">
+                <!-- <span class="span-price">$ {{ item.coinPrice }}</span>
+                <img src="../assets/img/buy_list/buy.png"
+                    @click="$develop" />
+                <img src="../assets/img/buy_list/farm.png"
+                    @click="$develop" /> -->
+
+                <img src="../assets/img/ranking-list/ranking list_icon_heat@2x.png" />
+              </div>
+            </div>
+            <empty v-if="!tableData.length" />
+          </div>
+        </div>
+        <div class="footer" v-if="rankOrXdrop === 0">
+          <el-pagination @current-change="pageChangeXdrop"
+                         layout="prev,pager,next"
+                         :total="xdropTotal"
+                         :page-size="6"
+                         :pager-count="5"
+                         :current-page.sync="xdropPage">
+          </el-pagination>
+        </div>
+        <div class="footer" v-if="rankOrXdrop === 1">
           <el-pagination @current-change="pageChange"
                          layout="prev,pager,next"
                          :total="total"
@@ -398,6 +428,7 @@
 import { mapGetters, mapActions } from "vuex";
 import Footer from "components/Layout/Footer.vue";
 import OMenu from "components/Layout/OMenu.vue";
+import XdropItem from "components/xdrop.vue";
 
 import Avatar from "components/Common/Avatar.vue";
 import { format_number } from "../common/js/common";
@@ -416,6 +447,7 @@ export default {
     OMenu,
     Avatar,
     Footer,
+    XdropItem
   },
   data () {
     return {
@@ -427,7 +459,12 @@ export default {
       loading: false,
       tableData: [],
       tab_index_instructions: 0,
-      active_index_road_map: 0
+      active_index_road_map: 0,
+      menusRankOrXdrop: ["Xdrop", "Ranking"],
+      rankOrXdrop: 0,
+      xdropList: [],
+      xdropPage: 1,
+      xdropTotal: 0
     };
   },
   computed: {
@@ -467,7 +504,7 @@ export default {
     const currQuarter = Math.floor((currMonth % 3 == 0 ? (currMonth / 3) : (currMonth / 3 + 1)));
     console.log('currQuarter', currQuarter)
     this.active_index_road_map = currQuarter - 1;
-    this.loadTable();
+    this.getXdropList();
   },
   methods: {
 
@@ -520,6 +557,41 @@ export default {
     tabInstructionsClick (tabIndex) {
       this.tab_index_instructions = tabIndex
       console.log('  this.tab_index_instructions ', this.tab_index_instructions)
+    },
+    toggleRankOrXdrop(index){
+       this.rankOrXdrop = index
+       if(index){
+         this.loadTable()
+       } else {
+          this.getXdropList()
+       }
+    },
+    getXdropList(){
+      this.loading = true;
+      this.$smAjax({
+        type: 'webx',
+        api: '/airdrop/airdrops',
+        data: {
+          page: this.xdropPage,
+          pageSize: 6,
+        },
+        method: "post",
+        loading: false,
+        app: this,
+        toast: false,
+      }).then((res) => {
+        this.loading = false;
+        console.log(res)
+        if (res.code == 200) {
+          const { content, totalElements } = res.data;
+          this.xdropList = content;
+          this.xdropTotal = totalElements;
+        }
+      })
+    },
+    pageChangeXdrop (page) {
+      this.xdropPage = page;
+      this.getXdropList();
     },
     mouseenter (index) {
       this.active_index_road_map = index
@@ -661,7 +733,6 @@ export default {
         border: torem(1) solid rgba(255, 255, 255, 0.4);
 
         padding: 0 0.46rem;
-        margin-top: 0.3rem;
         .item {
           display: flex;
           justify-content: space-between;
@@ -1850,4 +1921,5 @@ export default {
     }
   }
 }
+@import '~@assets/css/home-xdrop.scss';
 </style>
