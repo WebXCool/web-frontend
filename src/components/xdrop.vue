@@ -1,30 +1,31 @@
 <template>
     <div class="xdrop-container">
         <div class="xdrop-item">
-            <div class="xdrop-img">
+            <div class="xdrop-img" @click="handleToDetail">
                 <div class="badge"><img class="badge-ico" src="~@assets/img/xdrop/badge.png">BSC</div>
                 <img class="xdrop-asset" :src="dropItem.minioUrl">
             </div>
             <div class="xdrop-dec">
                 <div class="xdrop-title">{{dropItem.assetTitle}}</div>
                 <div class="avatar-name">
-                    <img class="avatar" src="~@assets/img/xdrop/badge.png">
+                    <img class="avatar" :src="dropItem.creatorAvatar">
                     <a class="name" href="#">{{dropItem.creator}}</a>
                 </div>
                 <div class="wining-rate">Wining Rate</div>
-                <div class="wining-rate-line"><span></span>0.1%</div>
+                <div class="wining-rate-line"><span></span>{{dropItem.rarity[0] === 1 ? '100%' : '100%'}}</div>
                 <div class="xdrop-amount">
                     <div class="amount-item">
                         <i>Airdrop Amount</i>
-                        <span>198,000,000</span>
+                        <span>{{dropItem.maxSupply}}</span>
                     </div>
                     <div class="amount-item">
                         <i>Participants</i>
-                        <span>999,9</span>
+                        <span>{{dropItem.reservedNum}}</span>
                     </div>
                 </div>
                 <div class="count-down">
-                    1
+                    <div>Drop in</div>
+                    <div v-countdown="dropItem.deadLine"/>
                 </div>
                 <a :href="dropItem.tweetURL" target="_bank" class="retweet">Retweet</a>
             </div>
@@ -40,9 +41,47 @@ export default {
             default: () => {}
         }
     },
+    directives: {
+        countdown: {
+            bind(el, binding) {
+                const { value } = binding
+                const getDjs = (value) => {
+                    const endTime = new Date(value).getTime()
+                    const nowTime = new Date().getTime()
+                    const laseTime = (endTime - nowTime) / 1000
+                    let d,h,c,s
+                    if (laseTime > 0) {
+                        d = parseInt(laseTime / (60 * 60 * 24))
+                        h = parseInt((laseTime / (60 * 60)) % 24)
+                        c = parseInt((laseTime / 60) % 60)
+                        s = parseInt(laseTime % 60)
+
+                        d = d < 10 ? '0' + d : d
+                        h = h < 10 ? '0' + h : h
+                        c = c < 10 ? '0' + c : c
+                        s = s < 10 ? '0' + s : s
+                    } else {
+                        d = h = c = s = '00'
+                    }
+                    return `${d}d:${h}h:${c}m:${s}s`
+                }
+                setInterval(() => {
+                    el.innerHTML = getDjs(value)
+                }, 1000)
+            },
+            unbind(){
+                console.log('unbindunbindunbind')
+            }
+        }
+    },
     data () {
         return {
             
+        }
+    },
+    methods: {
+        handleToDetail(){
+            this.$emit("click", this.dropItem);
         }
     }
 }
@@ -109,57 +148,6 @@ export default {
 .xdrop-dec{
     padding:0.16rem 0.2rem 0;
 }
-.xdrop-title{
-    font-size: 0.18rem;
-    font-family: TypoPRO-Montserrat-BlackItalic, TypoPRO-Montserrat;
-    font-weight: normal;
-    color: #FFFFFF;
-    line-height: 0.22rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-.avatar-name{
-    display: flex;
-    align-items: center;
-    padding: 0.08rem 0 0.12rem;
-    .avatar{
-        width: 0.24rem;
-        height: 0.24rem;
-        border-radius: 50%;
-        margin-right: 0.08rem;
-    }
-    .name{
-        font-size: 0.14rem;
-        font-family: Sora-Medium, Sora;
-        font-weight: 500;
-        color: #7B7C8A;
-    }
-}
-.wining-rate{
-    font-size: 14px;
-    font-family: Sora-Regular, Sora;
-    font-weight: 400;
-    color: #7B7C8A;
-    line-height: 18px;
-    padding-bottom: 0.08rem;
-}
-.wining-rate-line{
-    display: flex;
-    align-items: center;
-    padding-bottom: 0.12rem;
-    font-size: 0.14rem;
-    font-family: Sora-Medium, Sora;
-    font-weight: 500;
-    color: #FFFFFF;
-    span{
-        width: 0.08rem;
-        height: 0.08rem;
-        border-radius: 50%;
-        margin-right: 0.06rem;
-        background: #FFFFFF;
-    }
-}
 .xdrop-amount{
     display: flex;
     padding-bottom: 0.16rem;
@@ -185,6 +173,12 @@ export default {
     }
 }
 .count-down{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.12rem;
+    color: #7B7C8A;
     padding: 0.11rem 0 0.18rem;
     border-top: dotted 1px #7B7C8A;
 }

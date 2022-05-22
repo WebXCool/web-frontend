@@ -198,7 +198,7 @@
           <div class="menu-rank-xdrop" >
             <OMenu
               :menus="menusRankOrXdrop"
-              @click="toggleRankOrXdrop"></OMenu>
+              @click="toggleRankOrXdrop"/>
           </div>
           <div class="list bg-cover xdrop-content"
             v-if="rankOrXdrop === 0"
@@ -211,6 +211,7 @@
                 v-for="item in xdropList"
                 :key="item.id"
                 :drop-item="item"
+                @click="handleToDetail(item)"
               />
             </div>
           </div>
@@ -561,9 +562,11 @@ export default {
     toggleRankOrXdrop(index){
        this.rankOrXdrop = index
        if(index){
+         this.page = 1
          this.loadTable()
        } else {
-          this.getXdropList()
+         this.xdropPage = 1
+         this.getXdropList()
        }
     },
     getXdropList(){
@@ -592,6 +595,15 @@ export default {
     pageChangeXdrop (page) {
       this.xdropPage = page;
       this.getXdropList();
+    },
+    handleToDetail(item){
+      localStorage.setItem('_wex-drop',JSON.stringify(item))
+      this.$router.push({
+        name: 'xdropdetail',
+        params: {
+          id: item.id
+        }
+      })
     },
     mouseenter (index) {
       this.active_index_road_map = index
@@ -1921,5 +1933,5 @@ export default {
     }
   }
 }
-@import '~@assets/css/home-xdrop.scss';
+@import '~@assets/css/xdrop.scss';
 </style>

@@ -5,6 +5,7 @@ let config = {
   core_asset: "ipland",
   precision: 18,
   ex_data_api_url: "",
+  webx_api_url: 'https://webx.cool/api/webx/v1/twitter/bsctest',
   isDebug: false,
   DEFAULT_LANG: "en",
   LOCALE_KEY: "LOCALE_KEY"

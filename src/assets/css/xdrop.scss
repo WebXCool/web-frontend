@@ -53,3 +53,54 @@
         padding: 0 0.12rem;
     }
 }
+.xdrop-title{
+    font-size: 0.18rem;
+    font-family: TypoPRO-Montserrat-BlackItalic, TypoPRO-Montserrat;
+    font-weight: normal;
+    color: #FFFFFF;
+    line-height: 0.22rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.avatar-name{
+    display: flex;
+    align-items: center;
+    padding: 0.08rem 0 0.12rem;
+    .avatar{
+        width: 0.24rem;
+        height: 0.24rem;
+        border-radius: 50%;
+        margin-right: 0.08rem;
+    }
+    .name{
+        font-size: 0.14rem;
+        font-family: Sora-Medium, Sora;
+        font-weight: 500;
+        color: #7B7C8A;
+    }
+}
+.wining-rate{
+    font-size: 14px;
+    font-family: Sora-Regular, Sora;
+    font-weight: 400;
+    color: #7B7C8A;
+    line-height: 18px;
+    padding-bottom: 0.08rem;
+}
+.wining-rate-line{
+    display: flex;
+    align-items: center;
+    padding-bottom: 0.12rem;
+    font-size: 0.14rem;
+    font-family: Sora-Medium, Sora;
+    font-weight: 500;
+    color: #FFFFFF;
+    span{
+        width: 0.08rem;
+        height: 0.08rem;
+        border-radius: 50%;
+        margin-right: 0.06rem;
+        background: #FFFFFF;
+    }
+}

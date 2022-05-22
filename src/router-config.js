@@ -14,6 +14,11 @@ export default [
       {
         path: "how-to-use",
         component: (resolve) => require(["./pages/HowToUse.vue"], resolve),
+      },
+      {
+        path: "xdrop-detail/:id",
+        name: 'xdropdetail',
+        component: (resolve) => require(["./pages/xdropDetail.vue"], resolve),
       }
       // ,
       // {
