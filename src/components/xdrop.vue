@@ -5,7 +5,7 @@
                 <div class="badge"><img class="badge-ico" src="~@assets/img/xdrop/badge.png">BSC</div>
                 <img class="xdrop-asset" :src="dropItem.minioUrl">
             </div>
-            <div class="xdrop-dec">
+            <div class="xdrop-dec" @click="handleToDetail">
                 <div class="xdrop-title">{{dropItem.assetTitle}}</div>
                 <div class="avatar-name">
                     <img class="avatar" :src="dropItem.creatorAvatar">
@@ -27,6 +27,8 @@
                     <div>Drop in</div>
                     <div v-countdown="dropItem.deadLine"/>
                 </div>
+            </div>
+            <div class="xdrop-retweet">
                 <a :href="dropItem.tweetURL" target="_bank" class="retweet">Retweet</a>
             </div>
         </div>
@@ -181,6 +183,9 @@ export default {
     color: #7B7C8A;
     padding: 0.11rem 0 0.18rem;
     border-top: dotted 1px #7B7C8A;
+}
+.xdrop-retweet{
+    padding: 0 0.2rem;
 }
 .retweet{
     display: flex;

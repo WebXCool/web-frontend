@@ -7,10 +7,12 @@
     <div class="xdrop-dt">
       <div class="xdrop-dtl">
         <div class="xdrop-dtlt">
-          <img
-            class="xdrop-dtltl"
-            :src="dropInfo.minioUrl"
-          />
+          <div class="xdrop-dic">
+            <img
+              class="xdrop-dtltl"
+              :src="dropInfo.minioUrl"
+            />
+          </div>
           <div class="xdrop-dtltr">
             <div class="xdrop-title">{{ dropInfo.assetTitle }}</div>
             <div class="avatar-name">
@@ -26,7 +28,7 @@
 
       <div class="xdrop-dtr">
         <div class="xdrop-dtrt">
-          <img class="_eth" src="~@assets/img/xdrop/player_pic.png" />
+          <img class="_eth" src="~@assets/img/xdrop/icn_logo@2x.png" />
           <div class="_title">where's my <i>NFT</i></div>
           <img class="_install-btn" src="~@assets/img/xdrop/_install-btn.png" />
         </div>
@@ -321,10 +323,20 @@ export default {
 .xdrop-dtlt {
   display: flex;
   margin-bottom: 0.24rem;
-  .xdrop-dtltl {
-    width: 1.44rem;
+  .xdrop-dic{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.88rem;
     height: 1.44rem;
+    background: linear-gradient(7deg, #15062D 0%, #15062D 49%, #401D51 100%);
+    border-radius: 0.1rem;
+    border: 2px solid;
+    border-image: linear-gradient(154deg, rgba(32, 220, 254, 1), rgba(96, 80, 236, 1)) 2 2;
     margin-right: 0.24rem;
+  }
+  .xdrop-dtltl {
+    width: 100%;
   }
   .avatar-name {
     padding: 0.12rem 0 0.12rem;
@@ -346,8 +358,10 @@ export default {
   height: 1rem;
   padding-right: 0.02rem;
   ._eth {
-    width: 0.6rem;
-    height: 0.71rem;
+    width: 0.26rem;
+    height: 0.26rem;
+    margin-left: 0.18rem; 
+    margin-right: 0.12rem;
   }
   ._title {
     font-size: 0.22rem;
