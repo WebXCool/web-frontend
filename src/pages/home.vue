@@ -606,6 +606,7 @@ export default {
         console.log('this.$route', this.$route.query.isToList)
         if (this.$route.query.isToList) {
           smoothScroll()
+          // document.querySelector("#div_page_index>.body").scrollTo({ top: document.querySelector('.buy-list-box').offsetTop })
         }
       })
     },

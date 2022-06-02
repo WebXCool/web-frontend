@@ -167,8 +167,8 @@
     </template>
 
     <el-dialog class="_ipland-asset-full"
-               width="100%"
                title=""
+               :close-on-click-modal="true"
                :visible.sync="innerVisible"
                append-to-body>
       <img :src="dropInfo.minioUrl"
