@@ -1,78 +1,81 @@
 <template>
-  <div class="xdrop-detail"
-       v-if="dropInfo">
-    <div class="xdrop-back"
-         @click="handleBack">
-      <img class="_back-icon"
-           src="~@assets/img/xdrop/back.png" />
+  <div class="xdrop-detail" v-if="dropInfo">
+    <div class="xdrop-back" @click="handleBack">
+      <img class="_back-icon" src="~@assets/img/xdrop/back.png" />
       <span>Back</span>
     </div>
     <div class="xdrop-dt">
       <div class="xdrop-dtl">
         <div class="xdrop-dtlt">
-          <div class="xdrop-dic"
-               @click="innerVisible=true">
-            <img class="xdrop-dtltl"
-                 :src="dropInfo.minioUrl" />
+          <div class="xdrop-dic" @click="innerVisible = true">
+            <img class="xdrop-dtltl" :src="dropInfo.minioUrl" />
           </div>
           <div class="xdrop-dtltr">
             <div class="xdrop-title">{{ dropInfo.assetTitle }}</div>
             <div class="avatar-name">
-              <img class="avatar"
-                   :src="dropInfo.creatorAvatar" />
-              <a class="name"
-                 href="#">{{ dropInfo.creator }}</a>
+              <img class="avatar" :src="dropInfo.creatorAvatar" />
+              <a class="name" href="#">{{ dropInfo.creator }}</a>
             </div>
             <div class="wining-rate">Wining Rate</div>
-            <div class="wining-rate-line"><span></span>{{dropInfo.rarity[0] === 1 ? '100%' : '100%'}}</div>
+            <div class="wining-rate-line">
+              <span></span>{{ dropInfo.rarity[0] === 1 ? '100%' : '100%' }}
+            </div>
           </div>
         </div>
 
-        <div class="xdrop-dtlm">{{dropInfo.description}}</div>
+        <div class="xdrop-dtlm">{{ dropInfo.description }}</div>
       </div>
 
       <div class="xdrop-dtr">
         <div class="xdrop-dtrt">
-          <div style="display:flex;">
-            <img class="_eth"
-                 src="~@assets/img/xdrop/icn_logo@2x.png" />
+          <div>
+            <img class="_eth" src="~@assets/img/xdrop/icn_logo@2x.png" />
             <div class="_title">where's my <i>NFT</i></div>
-
           </div>
 
           <!-- <img class="_install-btn"
                  src="~@assets/img/xdrop/_install-btn.png" /> -->
           <div class="xdrop-dmenu">
+            <img src="~@assets/img/xdrop/arrow@2x.png" />
+
             <div class="item flex_center active">
-              <a :href="$config.webx_down_url"
-                 target="_blank"
-                 class="btn flex_center">Install WebX to Claim</a>
+              <a
+                :href="$config.webx_down_url"
+                target="_blank"
+                class="btn flex_center"
+                >Install WebX to Claim</a
+              >
               <div class="div-border"></div>
             </div>
           </div>
-
         </div>
         <div class="xdrop-dtrm">
           <div class="v-box-c">
             <div class="v-box">
               <i class="el-icon-loading"></i>
-              <iframe src="https://www.youtube.com/embed/3WEoSQqGEww"
-                      title="INTRUSION.FINANCE"
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen />
+              <iframe
+                src="https://www.youtube.com/embed/3WEoSQqGEww"
+                title="INTRUSION.FINANCE"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
             </div>
           </div>
         </div>
       </div>
     </div>
-    <OMenu class="xdrop-dmenu"
-           :menus="menusReservedOrClaimed"
-           @click="toggleReservedOrClaimed" />
+    <OMenu
+      class="xdrop-dmenu"
+      :menus="menusReservedOrClaimed"
+      @click="toggleReservedOrClaimed"
+    />
     <template v-if="ReservedOrClaimed === 0">
-      <div v-loading="loading"
-           element-loading-spinner="el-icon-loading"
-           element-loading-background="rgba(0, 0, 0, 0.8)">
+      <div
+        v-loading="loading"
+        element-loading-spinner="el-icon-loading"
+        element-loading-background="rgba(0, 0, 0, 0.8)"
+      >
         <table class="xdrop-table xdrop-table-reserved">
           <thead>
             <tr>
@@ -81,23 +84,23 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(item, index) in ReservedList"
-                :key="index">
+            <tr v-for="(item, index) in ReservedList" :key="index">
               <td>
                 <div class="xdrop-td-user">
                   <div class="user-avatar">
                     <!-- <img :src="item.minioUrl"> -->
-                    <img src="../assets/img/xdrop/activity_pic_blind box_large.png" />
-
+                    <img
+                      src="../assets/img/xdrop/activity_pic_blind box_large.png"
+                    />
                   </div>
-                  <span>{{item.assetTitle}}</span>
+                  <span>{{ item.assetTitle }}</span>
                 </div>
               </td>
               <td>
                 <div class="xdrop-td-winner">
-                  <span>{{item.userName}}</span>
+                  <span>{{ item.userName }}</span>
                   <div class="winner-avatar">
-                    <img :src="item.userAvatar">
+                    <img :src="item.userAvatar" />
                   </div>
                 </div>
               </td>
@@ -105,49 +108,58 @@
           </tbody>
         </table>
         <empty v-if="!ReservedList.length" />
-        <div class="xdrop-detail-pagination"
-             v-if="ReservedList.length > pageSize">
-          <el-pagination @current-change="pageChangeReserved"
-                         layout="prev,pager,next"
-                         :total="ReservedTotal"
-                         :pager-count="5"
-                         :current-page.sync="ReservedPage" />
+        <div
+          class="xdrop-detail-pagination"
+          v-if="ReservedList.length > pageSize"
+        >
+          <el-pagination
+            @current-change="pageChangeReserved"
+            layout="prev,pager,next"
+            :total="ReservedTotal"
+            :pager-count="5"
+            :current-page.sync="ReservedPage"
+          />
         </div>
       </div>
     </template>
     <template v-if="ReservedOrClaimed === 1">
-      <div v-loading="loading"
-           element-loading-spinner="el-icon-loading"
-           element-loading-background="rgba(0, 0, 0, 0.8)">
+      <div
+        v-loading="loading"
+        element-loading-spinner="el-icon-loading"
+        element-loading-background="rgba(0, 0, 0, 0.8)"
+      >
         <table class="xdrop-table xdrop-table-claimed">
           <thead>
             <tr>
               <th>Titile</th>
-              <th>Address<img @click="handleExportClaimed"
-                     class="export-icon"
-                     src="~@assets/img/xdrop/export.png" /></th>
+              <th>
+                Address<img
+                  @click="handleExportClaimed"
+                  class="export-icon"
+                  src="~@assets/img/xdrop/export.png"
+                />
+              </th>
               <th>Winner</th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(item, index) in claimedList"
-                :key="index">
+            <tr v-for="(item, index) in claimedList" :key="index">
               <td>
                 <div class="xdrop-td-user">
                   <div class="user-avatar">
-                    <img :src="item.minioUrl">
+                    <img :src="item.minioUrl" />
                   </div>
-                  <span>{{item.assetTitle}}</span>
+                  <span>{{ item.assetTitle }}</span>
                 </div>
               </td>
               <td class="xdrop-td-address">
-                {{item.userPublicKey}}
+                {{ item.userPublicKey }}
               </td>
               <td>
                 <div class="xdrop-td-winner">
-                  <span>{{item.userName}}</span>
+                  <span>{{ item.userName }}</span>
                   <div class="winner-avatar">
-                    <img :src="item.userAvatar">
+                    <img :src="item.userAvatar" />
                   </div>
                 </div>
               </td>
@@ -155,24 +167,29 @@
           </tbody>
         </table>
         <empty v-if="!claimedList.length" />
-        <div class="xdrop-detail-pagination"
-             v-if="claimedList.length > pageSize">
-          <el-pagination @current-change="pageChangeClaimed"
-                         layout="prev,pager,next"
-                         :total="claimedTotal"
-                         :pager-count="5"
-                         :current-page.sync="claimedPage" />
+        <div
+          class="xdrop-detail-pagination"
+          v-if="claimedList.length > pageSize"
+        >
+          <el-pagination
+            @current-change="pageChangeClaimed"
+            layout="prev,pager,next"
+            :total="claimedTotal"
+            :pager-count="5"
+            :current-page.sync="claimedPage"
+          />
         </div>
       </div>
     </template>
 
-    <el-dialog class="_ipland-asset-full"
-               title=""
-               :close-on-click-modal="true"
-               :visible.sync="innerVisible"
-               append-to-body>
-      <img :src="dropInfo.minioUrl"
-           class="_nft-asset-full" />
+    <el-dialog
+      class="_ipland-asset-full"
+      title=""
+      :close-on-click-modal="true"
+      :visible.sync="innerVisible"
+      append-to-body
+    >
+      <img :src="dropInfo.minioUrl" class="_nft-asset-full" />
     </el-dialog>
   </div>
 </template>
@@ -364,13 +381,16 @@ export default {
   }
   .xdrop-dtr {
     width: 4.05rem;
-    width: 5.3rem;
+    // width: 5.3rem;
     height: 4.12rem;
     background: #20222d;
     border-top-left-radius: 0.16rem;
     border-top-right-radius: 0.16rem;
     border-bottom-left-radius: 0.2rem;
     border-bottom-right-radius: 0.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 }
 .xdrop-dtlt {
@@ -412,22 +432,35 @@ export default {
   line-height: 0.18rem;
 }
 .xdrop-dtrt {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  // display: flex;
+  // align-items: center;
+  // justify-content: space-between;
   height: 1rem;
   padding-right: 0.02rem;
   padding: 0 0.14rem 0 0.02rem;
+  padding: 0 0.32rem;
+  > div {
+    display: flex;
+    margin: 0.28rem 0 0.3rem;
+  }
   .xdrop-dmenu {
     width: auto;
+    width: 100%;
     margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    > img {
+      width: 0.74rem;
+      height: 0.24rem;
+    }
+
     .item {
       width: auto;
     }
   }
   ._eth {
-    width: 0.26rem;
-    height: 0.26rem;
+    width: 0.42rem;
+    height: 0.42rem;
     margin-left: 0.18rem;
     margin-right: 0.12rem;
   }
@@ -436,6 +469,8 @@ export default {
     font-family: TypoPRO-Montserrat-BlackItalic, TypoPRO-Montserrat;
     font-weight: normal;
     color: #ffffff;
+    display: flex;
+    align-items: center;
     i {
       color: #4cd6ff;
     }
@@ -448,7 +483,8 @@ export default {
   }
 }
 .xdrop-dtrm {
-  height: 3.14rem;
+  // height: 3.14rem;
+  height: 2.3rem;
   border-radius: 0.2rem;
   /* background: red; */
 
