@@ -55,7 +55,7 @@
               One click to enter Web3, explore more at no cost. WebX provides both crypto users and non-crypto users a chance to seamlessly own & manage their data and digital assets across the social networks simply by a portal.
             </p>
             <div class="div-btns">
-              <a :href="$config.ipland_down_url"
+              <a :href="$config.webx_down_url"
                  target="_blank">
                 <img src="./assets/img/top/home_ico_button@2x.png" />
               </a>
@@ -88,6 +88,7 @@
                v-if="initOk">
             <!-- <transition :name="transitionName"> -->
             <router-view :key="key"
+                         ref="routerView"
                          v-if="!$route.meta.keepAlive"></router-view>
             <keep-alive v-if="$route.meta.keepAlive && visible_router_view">
               <router-view v-if="visible_router_view"></router-view>
@@ -114,9 +115,8 @@ const smoothScroll = () => {
   //   window.scrollTo(0, document.querySelector('.feature').offsetTop)
   // }
   // document.querySelector("#div_page_index>.body").scrollTop = document.querySelector('.feature').offsetTop
-  console.log(`document.querySelector('.feature').offsetTop`, document.querySelector('.feature').offsetTop)
   // window.scrollTo(0, document.querySelector('.feature').offsetTop + 1000)
-  document.querySelector("#div_page_index>.body").scrollTo({ top: document.querySelector('.feature').offsetTop, behavior: 'smooth' })
+  document.querySelector("#div_page_index>.body").scrollTo({ top: document.querySelector('.buy-list-box').offsetTop, behavior: 'smooth' })
 }
 export default {
   components: {
@@ -182,13 +182,13 @@ export default {
   },
   methods: {
     scrollToNext () {
-      console.log(111111)
       smoothScroll()
     },
     init () {
       this.initGlobal();
       this.initOk = true;
       this.setLoading({ status: false });
+
       // this.initChain();
     },
     ...mapActions({

@@ -6,6 +6,8 @@ let config = {
   precision: 18,
   ex_data_api_url: "",
   webx_api_url: 'https://webx.cool/api/webx/v1/twitter/bsctest',
+  webx_down_url: '',
+
   isDebug: false,
   DEFAULT_LANG: "en",
   LOCALE_KEY: "LOCALE_KEY"

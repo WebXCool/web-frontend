@@ -195,51 +195,47 @@
           <OMenu :menus="menus"></OMenu>
         </div>
         <div class="rank-xdrop-container">
-          <div class="menu-rank-xdrop" >
-            <OMenu
-              :menus="menusRankOrXdrop"
-              @click="toggleRankOrXdrop"/>
+          <div class="menu-rank-xdrop">
+            <OMenu :menus="menusRankOrXdrop"
+                   @click="toggleRankOrXdrop" />
           </div>
           <div class="list bg-cover xdrop-content"
-            v-if="rankOrXdrop === 0"
-            v-loading="loading"
-            element-loading-spinner="el-icon-loading"
-            element-loading-background="rgba(0, 0, 0, 0.8)"
-          > 
+               v-if="rankOrXdrop === 0"
+               v-loading="loading"
+               element-loading-spinner="el-icon-loading"
+               element-loading-background="rgba(0, 0, 0, 0.8)">
             <div class="xdrop-list">
-              <xdrop-item
-                v-for="item in xdropList"
-                :key="item.id"
-                :drop-item="item"
-                @click="handleToDetail(item)"
-              />
+              <xdrop-item v-for="item in xdropList"
+                          :key="item.id"
+                          :drop-item="item"
+                          @click="handleToDetail(item)" />
             </div>
           </div>
           <div class="list bg-cover"
-            v-if="rankOrXdrop === 1"
-            v-loading="loading"
-            element-loading-spinner="el-icon-loading"
-            element-loading-background="rgba(0, 0, 0, 0.8)">
+               v-if="rankOrXdrop === 1"
+               v-loading="loading"
+               element-loading-spinner="el-icon-loading"
+               element-loading-background="rgba(0, 0, 0, 0.8)">
             <div class="item"
-                v-for="(item, index) in tableData"
-                :key="item.id">
+                 v-for="(item, index) in tableData"
+                 :key="item.id">
               <div class="left">
                 <span class="seq"
                       :class="{ 'bg-cover': item.seq < 4 }">
                   {{ item.seq }}
                 </span>
                 <a :href="`https://twitter.com/${item.userName}`"
-                  target="_bank">
+                   target="_bank">
                   <Avatar :url="item.twitterAvatar"></Avatar>
                   <span>
                     {{ item.userName }}
                   </span>
                   <img class="circle"
-                      v-if="index % 2"
-                      src="../assets/img/ranking-list/ranking-list_status_off-line@2x.png" />
+                       v-if="index % 2"
+                       src="../assets/img/ranking-list/ranking-list_status_off-line@2x.png" />
                   <img v-else
-                      class="circle"
-                      src="../assets/img/ranking-list/ranking-list_status_online@2x.png" />
+                       class="circle"
+                       src="../assets/img/ranking-list/ranking-list_status_online@2x.png" />
 
                   <!-- <div class="circle"
                       :style="{ background: index % 2 ? '#58FF93' : '#58FF93' }"></div> -->
@@ -259,7 +255,8 @@
             <empty v-if="!tableData.length" />
           </div>
         </div>
-        <div class="footer" v-if="rankOrXdrop === 0">
+        <div class="footer"
+             v-if="rankOrXdrop === 0">
           <el-pagination @current-change="pageChangeXdrop"
                          layout="prev,pager,next"
                          :total="xdropTotal"
@@ -268,7 +265,8 @@
                          :current-page.sync="xdropPage">
           </el-pagination>
         </div>
-        <div class="footer" v-if="rankOrXdrop === 1">
+        <div class="footer"
+             v-if="rankOrXdrop === 1">
           <el-pagination @current-change="pageChange"
                          layout="prev,pager,next"
                          :total="total"
@@ -435,12 +433,24 @@ import Avatar from "components/Common/Avatar.vue";
 import { format_number } from "../common/js/common";
 
 
+// const smoothScroll = () => {
+//   const currentScroll = document.documentElement.scrollTop || document.body.scrollTop
+//   if (currentScroll > 0) {
+//     window.requestAnimationFrame(smoothScroll)
+//     window.scrollTo(0, document.querySelector('.feature').offsetTop)
+//   }
+// }
+
+
 const smoothScroll = () => {
-  const currentScroll = document.documentElement.scrollTop || document.body.scrollTop
-  if (currentScroll > 0) {
-    window.requestAnimationFrame(smoothScroll)
-    window.scrollTo(0, document.querySelector('.feature').offsetTop)
-  }
+  // const currentScroll = document.documentElement.scrollTop || document.body.scrollTop
+  // if (currentScroll > 0) {
+  //   window.requestAnimationFrame(smoothScroll)
+  //   window.scrollTo(0, document.querySelector('.feature').offsetTop)
+  // }
+  // document.querySelector("#div_page_index>.body").scrollTop = document.querySelector('.feature').offsetTop
+  // window.scrollTo(0, document.querySelector('.feature').offsetTop + 1000)
+  document.querySelector("#div_page_index>.body").scrollTo({ top: document.querySelector('.buy-list-box').offsetTop, behavior: 'smooth' })
 }
 export default {
   name: "app",
@@ -499,6 +509,8 @@ export default {
   },
   mounted () {
     //this.initChart();
+
+
     const currMonth = new Date().getMonth(); //获取当前月份(0-11,0代表1月)
 
     console.log('currMonth', currMonth)
@@ -559,17 +571,17 @@ export default {
       this.tab_index_instructions = tabIndex
       console.log('  this.tab_index_instructions ', this.tab_index_instructions)
     },
-    toggleRankOrXdrop(index){
-       this.rankOrXdrop = index
-       if(index){
-         this.page = 1
-         this.loadTable()
-       } else {
-         this.xdropPage = 1
-         this.getXdropList()
-       }
+    toggleRankOrXdrop (index) {
+      this.rankOrXdrop = index
+      if (index) {
+        this.page = 1
+        this.loadTable()
+      } else {
+        this.xdropPage = 1
+        this.getXdropList()
+      }
     },
-    getXdropList(){
+    getXdropList () {
       this.loading = true;
       this.$smAjax({
         type: 'webx',
@@ -590,14 +602,19 @@ export default {
           this.xdropList = content;
           this.xdropTotal = totalElements;
         }
+
+        console.log('this.$route', this.$route.query.isToList)
+        if (this.$route.query.isToList) {
+          smoothScroll()
+        }
       })
     },
     pageChangeXdrop (page) {
       this.xdropPage = page;
       this.getXdropList();
     },
-    handleToDetail(item){
-      localStorage.setItem('_wex-drop',JSON.stringify(item))
+    handleToDetail (item) {
+      localStorage.setItem('_wex-drop', JSON.stringify(item))
       this.$router.push({
         name: 'xdropdetail',
         params: {

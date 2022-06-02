@@ -20,7 +20,7 @@
             <div class="content bg-cover">
               <div class="left">
                 <p>1. Install WebX for Chrome.</p>
-                <a :href="$config.ipland_down_url"
+                <a :href="$config.webx_down_url"
                    target="_blank">
                   <img src="../assets/img/how_to_use/btn.png" />
                 </a>
@@ -85,7 +85,7 @@ export default {
   },
   methods: {
     down () {
-      window.open(this.$config.ipland_down_url)
+      window.open(this.$config.webx_down_url)
     }
   }
 };
