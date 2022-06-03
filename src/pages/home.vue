@@ -8,7 +8,9 @@
               <div class="div-seq">
                 <div class="num num-0">0</div>
                 <div class="num num-1">1</div>
-                <img src="../assets/img/Feature/feature-introduction_decorate_symbol-1@2x.png" />
+                <img
+                  src="../assets/img/Feature/feature-introduction_decorate_symbol-1@2x.png"
+                />
               </div>
               <div class="titile">SocialFi DID Aggregator</div>
               <p class="small_p">
@@ -20,19 +22,25 @@
             </div>
           </div>
           <div class="col-sm-6 right">
-            <img src="../assets/img/Feature/feature introduction_display diagram_img-1@2x.png" />
+            <img
+              src="../assets/img/Feature/feature introduction_display diagram_img-1@2x.png"
+            />
           </div>
         </div>
         <div class="list row">
           <div class="col-sm-6 right">
-            <img src="../assets/img/Feature/feature introduction_display diagram_img-2@2x.png" />
+            <img
+              src="../assets/img/Feature/feature introduction_display diagram_img-2@2x.png"
+            />
           </div>
           <div class="col-sm-6">
             <div class="item-box bg-cover">
               <div class="div-seq">
                 <div class="num num-0">0</div>
                 <div class="num num-1">2</div>
-                <img src="../assets/img/Feature/feature introduction_decorate_symbol-2@2x.png" />
+                <img
+                  src="../assets/img/Feature/feature introduction_decorate_symbol-2@2x.png"
+                />
               </div>
               <div class="titile">Innovative ways of distributing NFTs</div>
               <p class="small_p">
@@ -49,7 +57,9 @@
               <div class="div-seq">
                 <div class="num num-0">0</div>
                 <div class="num num-1">3</div>
-                <img src="../assets/img/Feature/feature-introduction_decorate_symbol-1@2x.png" />
+                <img
+                  src="../assets/img/Feature/feature-introduction_decorate_symbol-1@2x.png"
+                />
               </div>
               <div class="titile">Accessible to each individual</div>
               <p class="small_p">
@@ -60,41 +70,50 @@
             </div>
           </div>
           <div class="col-sm-6 right">
-            <img src="../assets/img/Feature/feature introduction_display diagram_img-3@2x.png" />
+            <img
+              src="../assets/img/Feature/feature introduction_display diagram_img-3@2x.png"
+            />
           </div>
         </div>
       </div>
 
       <div class="open-protocol-ecosystem instructions bg-cover">
         <div class="tab">
-          <OMenu :menus="menud_instructions"
-                 @click="tabInstructionsClick"></OMenu>
+          <OMenu
+            :menus="menud_instructions"
+            @click="tabInstructionsClick"
+          ></OMenu>
         </div>
-        <transition name="component-fade"
-                    mode="out-in">
-          <div class="tab-box"
-               :key="0"
-               v-if="tab_index_instructions == 0">
+        <transition name="component-fade" mode="out-in">
+          <div class="tab-box" :key="0" v-if="tab_index_instructions == 0">
             <div class="list row row-one">
               <div class="col-sm-6 right">
-                <img src="../assets/img/instructions/brands/instructions_brands_card-1@2x.png" />
+                <img
+                  src="../assets/img/instructions/brands/instructions_brands_card-1@2x.png"
+                />
               </div>
               <div class="col-sm-6">
                 <div class="item-box bg-cover">
                   <div class="titile">1. Install WebX</div>
-                  <img src="../assets/img/instructions/instructions_decorate_punctuation@2x.png" />
+                  <img
+                    src="../assets/img/instructions/instructions_decorate_punctuation@2x.png"
+                  />
                   <p class="small_p">Install WebX Plug-in for FREE.</p>
                 </div>
               </div>
             </div>
-            <img class="img-line"
-                 src="../assets/img/instructions/instructions_decorate_line-1@2x.png" />
+            <img
+              class="img-line"
+              src="../assets/img/instructions/instructions_decorate_line-1@2x.png"
+            />
 
             <div class="list row row-2">
               <div class="col-sm-6">
                 <div class="item-box bg-cover">
                   <div class="titile">2. Launch</div>
-                  <img src="../assets/img/instructions/instructions_decorate_punctuation@2x.png" />
+                  <img
+                    src="../assets/img/instructions/instructions_decorate_punctuation@2x.png"
+                  />
                   <p class="small_p">
                     Launch airdrop by publishing contents across social
                     networks.
@@ -102,67 +121,89 @@
                 </div>
               </div>
               <div class="col-sm-6 right">
-                <img src="../assets/img/instructions/brands/instructions_brands_card-2@2x.png" />
+                <img
+                  src="../assets/img/instructions/brands/instructions_brands_card-2@2x.png"
+                />
               </div>
             </div>
-            <img class="img-line img-line-2"
-                 src="../assets/img/instructions/instructions_decorate_line-2@2x.png" />
+            <img
+              class="img-line img-line-2"
+              src="../assets/img/instructions/instructions_decorate_line-2@2x.png"
+            />
             <div class="list row">
               <div class="col-sm-6 right">
-                <img src="../assets/img/instructions/brands/instructions_brands_card-3@2x.png" />
+                <img
+                  src="../assets/img/instructions/brands/instructions_brands_card-3@2x.png"
+                />
               </div>
               <div class="col-sm-6">
                 <div class="item-box bg-cover">
                   <div class="titile">3. Xdrop</div>
-                  <img src="../assets/img/instructions/instructions_decorate_punctuation@2x.png" />
+                  <img
+                    src="../assets/img/instructions/instructions_decorate_punctuation@2x.png"
+                  />
                   <p class="small_p">Tweet your NFT airdrop to followers.</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="tab-box"
-               v-if="tab_index_instructions == 1"
-               :key="1">
+          <div class="tab-box" v-if="tab_index_instructions == 1" :key="1">
             <div class="list row row-one">
               <div class="col-sm-6 right">
-                <img src="../assets/img/instructions/users/instructions_users_card-1@2x.png" />
+                <img
+                  src="../assets/img/instructions/users/instructions_users_card-1@2x.png"
+                />
               </div>
               <div class="col-sm-6">
                 <div class="item-box bg-cover">
                   <div class="titile">1. Retweet to Earn NFTs</div>
-                  <img src="../assets/img/instructions/instructions_decorate_punctuation@2x.png" />
+                  <img
+                    src="../assets/img/instructions/instructions_decorate_punctuation@2x.png"
+                  />
                   <p class="small_p">
                     Retweet the content to receive &earn the NFT.
                   </p>
                 </div>
               </div>
             </div>
-            <img class="img-line"
-                 src="../assets/img/instructions/instructions_decorate_line-1@2x.png" />
+            <img
+              class="img-line"
+              src="../assets/img/instructions/instructions_decorate_line-1@2x.png"
+            />
 
             <div class="list row row-2">
               <div class="col-sm-6">
                 <div class="item-box bg-cover">
                   <div class="titile">2. Install WebX</div>
-                  <img src="../assets/img/instructions/instructions_decorate_punctuation@2x.png" />
+                  <img
+                    src="../assets/img/instructions/instructions_decorate_punctuation@2x.png"
+                  />
                   <p class="small_p">Install WebX Plug-in for FREE.</p>
                 </div>
               </div>
               <div class="col-sm-6 right">
-                <img src="../assets/img/instructions/users/instructions_users_card-2@2x.png" />
+                <img
+                  src="../assets/img/instructions/users/instructions_users_card-2@2x.png"
+                />
               </div>
             </div>
-            <img class="img-line"
-                 src="../assets/img/instructions/instructions_decorate_line-2@2x.png" />
+            <img
+              class="img-line"
+              src="../assets/img/instructions/instructions_decorate_line-2@2x.png"
+            />
             <div class="list row">
               <div class="col-sm-6 right">
-                <img src="../assets/img/instructions/users/instructions_users_card-3@2x.png" />
+                <img
+                  src="../assets/img/instructions/users/instructions_users_card-3@2x.png"
+                />
               </div>
               <div class="col-sm-6">
                 <div class="item-box bg-cover">
                   <div class="titile">3. Trade</div>
-                  <img src="../assets/img/instructions/instructions_decorate_punctuation@2x.png" />
+                  <img
+                    src="../assets/img/instructions/instructions_decorate_punctuation@2x.png"
+                  />
                   <p class="small_p">Trade&share NFTs on social media.</p>
                 </div>
               </div>
@@ -174,68 +215,88 @@
       <div class="placeHolder"></div>
 
       <div class="conft bg-cover">
-        <img class="img-left"
-             src="../assets/img/link-graph/link graph_title@2x.png" />
-        <img class="img-right"
-             src="../assets/img/link-graph/link graph_decorate_img@2x.png" />
+        <img
+          class="img-left"
+          src="../assets/img/link-graph/link graph_title@2x.png"
+        />
+        <img
+          class="img-right"
+          src="../assets/img/link-graph/link graph_decorate_img@2x.png"
+        />
       </div>
 
       <div class="buy-list-box">
-        <img class="icon-right"
-             src="../assets/img/ranking-list/ranking list_decorate_img-1@2x.png" />
-        <img class="icon-left"
-             src="../assets/img/ranking-list/ranking list_decorate_img-2@2x.png" />
+        <img
+          class="icon-right"
+          src="../assets/img/ranking-list/ranking list_decorate_img-1@2x.png"
+        />
+        <img
+          class="icon-left"
+          src="../assets/img/ranking-list/ranking list_decorate_img-2@2x.png"
+        />
 
         <div class="title">
-          <img src="../assets/img/ranking-list/ranking list_decorate_star@2x.png" />
+          <img
+            src="../assets/img/ranking-list/ranking list_decorate_star@2x.png"
+          />
           <div class="text">Who's active in our <span>community</span></div>
-          <img src="../assets/img/ranking-list/ranking list_decorate_star@2x.png" />
+          <img
+            src="../assets/img/ranking-list/ranking list_decorate_star@2x.png"
+          />
         </div>
         <div class="tab">
           <OMenu :menus="menus"></OMenu>
         </div>
         <div class="rank-xdrop-container">
           <div class="menu-rank-xdrop">
-            <OMenu :menus="menusRankOrXdrop"
-                   @click="toggleRankOrXdrop" />
+            <OMenu :menus="menusRankOrXdrop" @click="toggleRankOrXdrop" />
           </div>
-          <div class="list bg-cover xdrop-content"
-               v-if="rankOrXdrop === 0"
-               v-loading="loading"
-               element-loading-spinner="el-icon-loading"
-               element-loading-background="rgba(0, 0, 0, 0.8)">
+          <div
+            class="list bg-cover xdrop-content"
+            v-if="rankOrXdrop === 0"
+            v-loading="loading"
+            element-loading-spinner="el-icon-loading"
+            element-loading-background="rgba(0, 0, 0, 0.8)"
+          >
             <div class="xdrop-list">
-              <xdrop-item v-for="item in xdropList"
-                          :key="item.id"
-                          :drop-item="item"
-                          @click="handleToDetail(item)" />
+              <xdrop-item
+                v-for="item in xdropList"
+                :key="item.id"
+                :drop-item="item"
+                @click="handleToDetail(item)"
+              />
             </div>
           </div>
-          <div class="list bg-cover"
-               v-if="rankOrXdrop === 1"
-               v-loading="loading"
-               element-loading-spinner="el-icon-loading"
-               element-loading-background="rgba(0, 0, 0, 0.8)">
-            <div class="item"
-                 v-for="(item, index) in tableData"
-                 :key="item.id">
+          <div
+            class="list bg-cover"
+            v-if="rankOrXdrop === 1"
+            v-loading="loading"
+            element-loading-spinner="el-icon-loading"
+            element-loading-background="rgba(0, 0, 0, 0.8)"
+          >
+            <div class="item" v-for="(item, index) in tableData" :key="item.id">
               <div class="left">
-                <span class="seq"
-                      :class="{ 'bg-cover': item.seq < 4 }">
+                <span class="seq" :class="{ 'bg-cover': item.seq < 4 }">
                   {{ item.seq }}
                 </span>
-                <a :href="`https://twitter.com/${item.userName}`"
-                   target="_bank">
+                <a
+                  :href="`https://twitter.com/${item.userName}`"
+                  target="_bank"
+                >
                   <Avatar :url="item.twitterAvatar"></Avatar>
                   <span>
                     {{ item.userName }}
                   </span>
-                  <img class="circle"
-                       v-if="index % 2"
-                       src="../assets/img/ranking-list/ranking-list_status_off-line@2x.png" />
-                  <img v-else
-                       class="circle"
-                       src="../assets/img/ranking-list/ranking-list_status_online@2x.png" />
+                  <img
+                    class="circle"
+                    v-if="index % 2"
+                    src="../assets/img/ranking-list/ranking-list_status_off-line@2x.png"
+                  />
+                  <img
+                    v-else
+                    class="circle"
+                    src="../assets/img/ranking-list/ranking-list_status_online@2x.png"
+                  />
 
                   <!-- <div class="circle"
                       :style="{ background: index % 2 ? '#58FF93' : '#58FF93' }"></div> -->
@@ -249,30 +310,34 @@
                 <img src="../assets/img/buy_list/farm.png"
                     @click="$develop" /> -->
 
-                <img src="../assets/img/ranking-list/ranking list_icon_heat@2x.png" />
+                <img
+                  src="../assets/img/ranking-list/ranking list_icon_heat@2x.png"
+                />
               </div>
             </div>
             <empty v-if="!tableData.length" />
           </div>
         </div>
-        <div class="footer"
-             v-if="rankOrXdrop === 0">
-          <el-pagination @current-change="pageChangeXdrop"
-                         layout="prev,pager,next"
-                         :total="xdropTotal"
-                         :page-size="6"
-                         :pager-count="5"
-                         :current-page.sync="xdropPage">
+        <div class="footer" v-if="rankOrXdrop === 0">
+          <el-pagination
+            @current-change="pageChangeXdrop"
+            layout="prev,pager,next"
+            :total="xdropTotal"
+            :page-size="6"
+            :pager-count="5"
+            :current-page.sync="xdropPage"
+          >
           </el-pagination>
         </div>
-        <div class="footer"
-             v-if="rankOrXdrop === 1">
-          <el-pagination @current-change="pageChange"
-                         layout="prev,pager,next"
-                         :total="total"
-                         :page-size="10"
-                         :pager-count="5"
-                         :current-page.sync="page">
+        <div class="footer" v-if="rankOrXdrop === 1">
+          <el-pagination
+            @current-change="pageChange"
+            layout="prev,pager,next"
+            :total="total"
+            :page-size="10"
+            :pager-count="5"
+            :current-page.sync="page"
+          >
           </el-pagination>
           <!-- <div class="div-go-page">
             <input type="text"
@@ -284,10 +349,11 @@
         </div>
       </div>
 
-      <div id="road-map"
-           class="open-protocol-ecosystem road-map bg-cover">
-        <img class="arrow"
-             src="../assets/img/roadmap/roadmap_decorate_img-2@2x.png" />
+      <div id="road-map" class="open-protocol-ecosystem road-map bg-cover">
+        <img
+          class="arrow"
+          src="../assets/img/roadmap/roadmap_decorate_img-2@2x.png"
+        />
 
         <div class="title">
           <div class="div-seq">
@@ -296,12 +362,13 @@
           </div>
           <img src="../assets/img/roadmap/roadmap_decorate_img-1@2x.png" />
         </div>
-        <div class="list row"
-             @mouseleave="mouseleave">
+        <div class="list row" @mouseleave="mouseleave">
           <div class="col-sm-3">
-            <div class="item-box bg-cover"
-                 :class="{ 'active-item': active_index_road_map == 0 }"
-                 @mouseenter="mouseenter(0)">
+            <div
+              class="item-box bg-cover"
+              :class="{ 'active-item': active_index_road_map == 0 }"
+              @mouseenter="mouseenter(0)"
+            >
               <div class="title">Q2</div>
               <div class="year">2022</div>
 
@@ -314,9 +381,11 @@
             </div>
           </div>
           <div class="col-sm-3">
-            <div class="item-box bg-cover"
-                 :class="{ 'active-item': active_index_road_map == 1 }"
-                 @mouseenter="mouseenter(1)">
+            <div
+              class="item-box bg-cover"
+              :class="{ 'active-item': active_index_road_map == 1 }"
+              @mouseenter="mouseenter(1)"
+            >
               <div class="title">Q3</div>
               <div class="year">2022</div>
 
@@ -329,9 +398,11 @@
             </div>
           </div>
           <div class="col-sm-3">
-            <div class="item-box bg-cover"
-                 :class="{ 'active-item': active_index_road_map == 2 }"
-                 @mouseenter="mouseenter(2)">
+            <div
+              class="item-box bg-cover"
+              :class="{ 'active-item': active_index_road_map == 2 }"
+              @mouseenter="mouseenter(2)"
+            >
               <div class="title">Q4</div>
               <div class="year">2022</div>
               <ul>
@@ -343,9 +414,11 @@
             </div>
           </div>
           <div class="col-sm-3">
-            <div class="item-box bg-cover"
-                 :class="{ 'active-item': active_index_road_map == 3 }"
-                 @mouseenter="mouseenter(3)">
+            <div
+              class="item-box bg-cover"
+              :class="{ 'active-item': active_index_road_map == 3 }"
+              @mouseenter="mouseenter(3)"
+            >
               <div class="title">Q1</div>
               <div class="year">2023</div>
               <ul>
@@ -359,9 +432,7 @@
         </div>
       </div>
 
-      <div id="partner"
-           v-if="false"
-           class="open-protocol-ecosystem bg-cover">
+      <div id="partner" v-if="false" class="open-protocol-ecosystem bg-cover">
         <div class="title">- <i>P</i>artners -</div>
         <div class="list row">
           <div class="col-sm-3 col-xs-6">
@@ -599,6 +670,15 @@ export default {
         console.log(res)
         if (res.code == 200) {
           const { content, totalElements } = res.data;
+          content.forEach(item => {
+            const resourceUrl = item.minioUrl
+            if (resourceUrl)
+              item.fileType = this.getFileType(resourceUrl)
+
+            item.fileValue = resourceUrl
+
+          })
+          console.log('content', content)
           this.xdropList = content;
           this.xdropTotal = totalElements;
         }
@@ -609,6 +689,23 @@ export default {
           // document.querySelector("#div_page_index>.body").scrollTo({ top: document.querySelector('.buy-list-box').offsetTop })
         }
       })
+    },
+    getFileType (url) {
+      const fileArr = url.split('.')
+      const suffix = (fileArr[fileArr.length - 1]).toLowerCase()
+      let fileType = 'image'
+      switch (suffix) {
+        case 'mp3':
+          fileType = 'audio'
+          break
+        case 'mp4':
+          fileType = 'video'
+          break
+        // case 'gif':
+        //   fileType = 'gif'
+        //   break
+      }
+      return fileType
     },
     pageChangeXdrop (page) {
       this.xdropPage = page;

@@ -8,7 +8,8 @@
       <div class="xdrop-dtl">
         <div class="xdrop-dtlt">
           <div class="xdrop-dic" @click="innerVisible = true">
-            <img class="xdrop-dtltl" :src="dropInfo.minioUrl" />
+            <!-- <img class="xdrop-dtltl" :src="dropInfo.minioUrl" /> -->
+            <nftAssets :nftInfo="dropInfo" />
           </div>
           <div class="xdrop-dtltr">
             <div class="xdrop-title">{{ dropInfo.assetTitle }}</div>
@@ -131,7 +132,7 @@
         <table class="xdrop-table xdrop-table-claimed">
           <thead>
             <tr>
-              <th>Titile</th>
+              <th>Title</th>
               <th>
                 Address<img
                   @click="handleExportClaimed"
@@ -189,16 +190,20 @@
       :visible.sync="innerVisible"
       append-to-body
     >
-      <img :src="dropInfo.minioUrl" class="_nft-asset-full" />
+      <!-- <img :src="dropInfo.minioUrl" class="_nft-asset-full" /> -->
+      <nftAssets :nftInfo="dropInfo" :isAutoPlay="true" />
     </el-dialog>
   </div>
 </template>
 
 <script>
 import OMenu from "components/Layout/OMenu.vue";
+import nftAssets from "components/nftAssets.vue";
+
 export default {
   components: {
     OMenu,
+    nftAssets
   },
   data () {
     return {
@@ -222,6 +227,7 @@ export default {
     let dropInfo = localStorage.getItem('_wex-drop')
     if (dropId && dropInfo) {
       dropInfo = JSON.parse(dropInfo)
+      console.log('dropInfo', dropInfo)
       if (dropInfo.id && dropId === dropInfo.id) {
         this.dropInfo = dropInfo
         this.dropId = dropId
@@ -461,7 +467,7 @@ export default {
   ._eth {
     width: 0.42rem;
     height: 0.42rem;
-    margin-left: 0.18rem;
+    // margin-left: 0.18rem;
     margin-right: 0.12rem;
   }
   ._title {
