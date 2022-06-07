@@ -44,7 +44,7 @@ export default {
     return {
       navIndex: 0,
       menus: ["Home", "How to use", "Whitepaper", "Jobs"],
-      paths: ["", "/how-to-use", "", "/jobs"],
+      paths: ["/home", "/how-to-use", "", "/jobs"],
       // paths: {
       //   "/": 0,
       //   "/login": 1,
@@ -87,7 +87,8 @@ export default {
         return;
       }
 
-      let path = "/official" + this.paths[index]
+      let path = this.paths[index]
+      console.log('path', path)
       if (index < 2)
         this.$router.push(path);
 

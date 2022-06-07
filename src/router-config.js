@@ -1,14 +1,14 @@
 export default [
   {
     path: "/",
-    redirect: "/official",
+    redirect: "/home",
   },
   {
-    path: "/official",
+    path: "/",
     component: (resolve) => require(["./Official.vue"], resolve),
     children: [
       {
-        path: "",
+        path: "home",
         component: (resolve) => require(["./pages/Home.vue"], resolve),
       },
       {
@@ -16,8 +16,8 @@ export default [
         component: (resolve) => require(["./pages/HowToUse.vue"], resolve),
       },
       {
-        path: "xdrop-detail/:id",
-        name: 'xdropdetail',
+        path: "XDrop/:id",
+        name: 'XDrop',
         component: (resolve) => require(["./pages/xdropDetail.vue"], resolve),
       }
       // ,

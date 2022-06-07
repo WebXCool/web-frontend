@@ -34,7 +34,7 @@
           </div>
         </div>
         <div class="top-content"
-             v-if="$route.path == '/official'">
+             v-if="$route.path == '/home'">
 
           <div class="left">
             <div class="div-new-icons">
@@ -109,13 +109,7 @@ import { config } from "./config/env";
 import MobileMenu from "components/Layout/MobileMenu.vue";
 
 const smoothScroll = () => {
-  // const currentScroll = document.documentElement.scrollTop || document.body.scrollTop
-  // if (currentScroll > 0) {
-  //   window.requestAnimationFrame(smoothScroll)
-  //   window.scrollTo(0, document.querySelector('.feature').offsetTop)
-  // }
-  // document.querySelector("#div_page_index>.body").scrollTop = document.querySelector('.feature').offsetTop
-  // window.scrollTo(0, document.querySelector('.feature').offsetTop + 1000)
+
   document.querySelector("#div_page_index>.body").scrollTo({ top: document.querySelector('.buy-list-box').offsetTop, behavior: 'smooth' })
 }
 export default {
@@ -153,7 +147,7 @@ export default {
     },
 
     activeMenuIndex () {
-      let paths = ["/official", "/official/how-to-use", "", "/official/jobs"];
+      let paths = ["/home", "/how-to-use", "", "/jobs"];
       let path = this.$route.path;
       let activeIndex = paths.findIndex((item) => item == path);
       if (path.indexOf("/protocol-pools/") != -1) {

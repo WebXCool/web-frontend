@@ -1,21 +1,27 @@
 <template>
-  <div class="xdrop-detail" v-if="dropInfo">
-    <div class="xdrop-back" @click="handleBack">
-      <img class="_back-icon" src="~@assets/img/xdrop/back.png" />
+  <div class="xdrop-detail"
+       v-if="dropInfo">
+    <div class="xdrop-back"
+         @click="handleBack">
+      <img class="_back-icon"
+           src="~@assets/img/xdrop/back.png" />
       <span>Back</span>
     </div>
     <div class="xdrop-dt">
       <div class="xdrop-dtl">
         <div class="xdrop-dtlt">
-          <div class="xdrop-dic" @click="innerVisible = true">
+          <div class="xdrop-dic"
+               @click="innerVisible = true">
             <!-- <img class="xdrop-dtltl" :src="dropInfo.minioUrl" /> -->
             <nftAssets :nftInfo="dropInfo" />
           </div>
           <div class="xdrop-dtltr">
             <div class="xdrop-title">{{ dropInfo.assetTitle }}</div>
             <div class="avatar-name">
-              <img class="avatar" :src="dropInfo.creatorAvatar" />
-              <a class="name" href="#">{{ dropInfo.creator }}</a>
+              <img class="avatar"
+                   :src="dropInfo.creatorAvatar" />
+              <a class="name"
+                 href="#">{{ dropInfo.creator }}</a>
             </div>
             <div class="wining-rate">Wining Rate</div>
             <div class="wining-rate-line">
@@ -29,8 +35,9 @@
 
       <div class="xdrop-dtr">
         <div class="xdrop-dtrt">
-          <div>
-            <img class="_eth" src="~@assets/img/xdrop/icn_logo@2x.png" />
+          <div class="title">
+            <img class="_eth"
+                 src="~@assets/img/xdrop/icn_logo@2x.png" />
             <div class="_title">where's my <i>NFT</i></div>
           </div>
 
@@ -40,12 +47,9 @@
             <img src="~@assets/img/xdrop/arrow@2x.png" />
 
             <div class="item flex_center active">
-              <a
-                :href="$config.webx_down_url"
-                target="_blank"
-                class="btn flex_center"
-                >Install WebX to Claim</a
-              >
+              <a :href="$config.webx_down_url"
+                 target="_blank"
+                 class="btn flex_center">Install WebX to Claim</a>
               <div class="div-border"></div>
             </div>
           </div>
@@ -54,29 +58,23 @@
           <div class="v-box-c">
             <div class="v-box">
               <i class="el-icon-loading"></i>
-              <iframe
-                src="https://www.youtube.com/embed/3WEoSQqGEww"
-                title="INTRUSION.FINANCE"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
+              <iframe src="https://www.youtube.com/embed/3WEoSQqGEww"
+                      title="INTRUSION.FINANCE"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen />
             </div>
           </div>
         </div>
       </div>
     </div>
-    <OMenu
-      class="xdrop-dmenu"
-      :menus="menusReservedOrClaimed"
-      @click="toggleReservedOrClaimed"
-    />
+    <OMenu class="xdrop-dmenu"
+           :menus="menusReservedOrClaimed"
+           @click="toggleReservedOrClaimed" />
     <template v-if="ReservedOrClaimed === 0">
-      <div
-        v-loading="loading"
-        element-loading-spinner="el-icon-loading"
-        element-loading-background="rgba(0, 0, 0, 0.8)"
-      >
+      <div v-loading="loading"
+           element-loading-spinner="el-icon-loading"
+           element-loading-background="rgba(0, 0, 0, 0.8)">
         <table class="xdrop-table xdrop-table-reserved">
           <thead>
             <tr>
@@ -85,14 +83,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(item, index) in ReservedList" :key="index">
+            <tr v-for="(item, index) in ReservedList"
+                :key="index">
               <td>
                 <div class="xdrop-td-user">
                   <div class="user-avatar">
                     <!-- <img :src="item.minioUrl"> -->
-                    <img
-                      src="../assets/img/xdrop/activity_pic_blind box_large.png"
-                    />
+                    <img src="../assets/img/xdrop/activity_pic_blind box_large.png" />
                   </div>
                   <span>{{ item.assetTitle }}</span>
                 </div>
@@ -109,42 +106,35 @@
           </tbody>
         </table>
         <empty v-if="!ReservedList.length" />
-        <div
-          class="xdrop-detail-pagination"
-          v-if="ReservedList.length > pageSize"
-        >
-          <el-pagination
-            @current-change="pageChangeReserved"
-            layout="prev,pager,next"
-            :total="ReservedTotal"
-            :pager-count="5"
-            :current-page.sync="ReservedPage"
-          />
+        <div class="xdrop-detail-pagination"
+             v-if="ReservedList.length > pageSize">
+          <el-pagination @current-change="pageChangeReserved"
+                         layout="prev,pager,next"
+                         :total="ReservedTotal"
+                         :pager-count="5"
+                         :current-page.sync="ReservedPage" />
         </div>
       </div>
     </template>
     <template v-if="ReservedOrClaimed === 1">
-      <div
-        v-loading="loading"
-        element-loading-spinner="el-icon-loading"
-        element-loading-background="rgba(0, 0, 0, 0.8)"
-      >
+      <div v-loading="loading"
+           element-loading-spinner="el-icon-loading"
+           element-loading-background="rgba(0, 0, 0, 0.8)">
         <table class="xdrop-table xdrop-table-claimed">
           <thead>
             <tr>
               <th>Title</th>
               <th>
-                Address<img
-                  @click="handleExportClaimed"
-                  class="export-icon"
-                  src="~@assets/img/xdrop/export.png"
-                />
+                Address<img @click="handleExportClaimed"
+                     class="export-icon"
+                     src="~@assets/img/xdrop/export.png" />
               </th>
               <th>Winner</th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(item, index) in claimedList" :key="index">
+            <tr v-for="(item, index) in claimedList"
+                :key="index">
               <td>
                 <div class="xdrop-td-user">
                   <div class="user-avatar">
@@ -168,30 +158,26 @@
           </tbody>
         </table>
         <empty v-if="!claimedList.length" />
-        <div
-          class="xdrop-detail-pagination"
-          v-if="claimedList.length > pageSize"
-        >
-          <el-pagination
-            @current-change="pageChangeClaimed"
-            layout="prev,pager,next"
-            :total="claimedTotal"
-            :pager-count="5"
-            :current-page.sync="claimedPage"
-          />
+        <div class="xdrop-detail-pagination"
+             v-if="claimedList.length > pageSize">
+          <el-pagination @current-change="pageChangeClaimed"
+                         layout="prev,pager,next"
+                         :total="claimedTotal"
+                         :pager-count="5"
+                         :current-page.sync="claimedPage" />
         </div>
       </div>
     </template>
 
-    <el-dialog
-      class="_ipland-asset-full"
-      title=""
-      :close-on-click-modal="true"
-      :visible.sync="innerVisible"
-      append-to-body
-    >
+    <el-dialog class="_webx-asset-full"
+               title=""
+               :close-on-click-modal="true"
+               :visible.sync="innerVisible"
+               append-to-body>
       <!-- <img :src="dropInfo.minioUrl" class="_nft-asset-full" /> -->
-      <nftAssets :nftInfo="dropInfo" :isAutoPlay="true" />
+      <nftAssets :nftInfo="dropInfo"
+                 :isBgImg="false"
+                 :isAutoPlay="true" />
     </el-dialog>
   </div>
 </template>
@@ -223,11 +209,13 @@ export default {
     };
   },
   mounted () {
-    const dropId = this.$route.params.id
+    let dropId = this.$route.params.id
+    console.log('this.$route.params', this.$route.params)
     let dropInfo = localStorage.getItem('_wex-drop')
     if (dropId && dropInfo) {
+      dropId = dropId.replace('0xt', '')
       dropInfo = JSON.parse(dropInfo)
-      console.log('dropInfo', dropInfo)
+      console.log('dropInfo', dropInfo, 'dropId', dropId)
       if (dropInfo.id && dropId === dropInfo.id) {
         this.dropInfo = dropInfo
         this.dropId = dropId
@@ -334,8 +322,14 @@ export default {
       })
     },
     handleBack () {
-
-      this.$router.push('/official?isToList=1')
+      let query = {
+        isToList: 1
+      }
+      const page = this.$route.params.page
+      if (page) {
+        query.xdropPage = page
+      }
+      this.$router.push({ path: '/', query })
     }
   },
 };
@@ -444,8 +438,8 @@ export default {
   height: 1rem;
   padding-right: 0.02rem;
   padding: 0 0.14rem 0 0.02rem;
-  padding: 0 0.32rem;
-  > div {
+  padding: 0 0.26rem;
+  > .title {
     display: flex;
     margin: 0.28rem 0 0.3rem;
   }
@@ -455,6 +449,7 @@ export default {
     margin-bottom: 0;
     display: flex;
     align-items: center;
+    padding: 0 0.08rem;
     > img {
       width: 0.74rem;
       height: 0.24rem;

@@ -6,9 +6,9 @@
     <div class="item flex_center"
          v-for="(item,index) in menus"
          :key="item"
+         @click="openMenu(index)"
          :class="{'active':index==navIndex}">
-      <a class="btn flex_center"
-         @click="openMenu(index)">{{item}}</a>
+      <a class="btn flex_center">{{item}}</a>
       <div class="div-border"></div>
     </div>
   </div>
@@ -52,7 +52,9 @@ export default {
       }
       if (index == 2 && this.menus[2] == 'Whitepaper') {
       } else {
-        this.navIndex = index;
+        if (index < 3)
+          this.navIndex = index;
+        else this.$develop()
       }
       this.$emit("click", index);
     },

@@ -1,18 +1,24 @@
 <template>
   <div class="xdrop-container">
     <div class="xdrop-item">
-      <div class="xdrop-img" @click="handleToDetail">
+      <div class="xdrop-img"
+           @click="handleToDetail">
         <div class="badge">
-          <img class="badge-ico" src="~@assets/img/xdrop/badge.png" />BSC
+          <img class="badge-ico"
+               src="~@assets/img/xdrop/badge.png" />BSC
         </div>
         <!-- <img class="xdrop-asset" :src="dropItem.minioUrl" /> -->
-        <nftAssets :nftInfo="dropItem" />
+        <nftAssets :nftInfo="dropItem"
+                   :isBgImg="true" />
       </div>
-      <div class="xdrop-dec" @click="handleToDetail">
+      <div class="xdrop-dec"
+           @click="handleToDetail">
         <div class="xdrop-title">{{ dropItem.assetTitle }}</div>
         <div class="avatar-name">
-          <img class="avatar" :src="dropItem.creatorAvatar" />
-          <a class="name" href="#">{{ dropItem.creator }}</a>
+          <img class="avatar"
+               :src="dropItem.creatorAvatar" />
+          <a class="name"
+             href="#">{{ dropItem.creator }}</a>
         </div>
         <div class="wining-rate">Wining Rate</div>
         <div class="wining-rate-line">
@@ -34,7 +40,9 @@
         </div>
       </div>
       <div class="xdrop-retweet">
-        <a :href="dropItem.tweetURL" target="_bank" class="retweet">Retweet</a>
+        <a :href="dropItem.tweetURL"
+           target="_bank"
+           class="retweet">Retweet</a>
       </div>
     </div>
   </div>
@@ -83,7 +91,7 @@ export default {
         }, 1000)
       },
       unbind () {
-        console.log('unbindunbindunbind')
+        // console.log('unbindunbindunbind')
       }
     }
   },

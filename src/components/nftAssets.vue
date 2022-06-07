@@ -1,26 +1,28 @@
 <template>
   <div class="_nft-asset-con">
-    <img
-      v-if="nftInfo.fileType === 'image' || nftInfo.fileType === 'gif'"
-      class="_nft-asset-img xdrop-dtltl xdrop-asset"
-      :src="nftInfo.fileValue"
-      @click="handleFull"
-    />
-    <video
-      v-if="nftInfo.fileType === 'video'"
-      id="video"
-      class="_nft-asset-video"
-      :autoplay="isAutoPlay ? 'autoplay' : ''"
-      :src="nftInfo.fileValue"
-      controls="controls"
-    />
+    <div v-if="nftInfo.fileType === 'image' || nftInfo.fileType === 'gif'">
+      <div v-if="isBgImg"
+           class="div-img bg-cover"
+           :style="{backgroundImage:`url(${nftInfo.fileValue})`}"
+           @click="handleFull">
+      </div>
+      <img v-else
+           class="_nft-asset-img _nft-asset-full xdrop-dtltl xdrop-asset"
+           :src="nftInfo.fileValue"
+           @click="handleFull" />
+    </div>
 
-    <audio
-      v-if="nftInfo.fileType === 'audio'"
-      class="_nft-asset-audio"
-      controls="controls"
-      :src="nftInfo.fileValue"
-    />
+    <video v-if="nftInfo.fileType === 'video'"
+           id="video"
+           class="_nft-asset-video"
+           :autoplay="isAutoPlay ? 'autoplay' : ''"
+           :src="nftInfo.fileValue"
+           controls="controls" />
+
+    <audio v-if="nftInfo.fileType === 'audio'"
+           class="_nft-asset-audio"
+           controls="controls"
+           :src="nftInfo.fileValue" />
   </div>
 </template>
 
@@ -36,6 +38,10 @@ export default {
     isAutoPlay: {
       type: Boolean,
       default: false
+    },
+    isBgImg: {
+      type: Boolean,
+      default: true
     }
   },
   data () {
@@ -53,3 +59,22 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+._nft-asset-con {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  > div {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    .div-img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+</style>
