@@ -599,17 +599,13 @@ export default {
             const resourceUrl = item.minioUrl
             if (resourceUrl)
               item.fileType = this.getFileType(resourceUrl)
-
             item.fileValue = resourceUrl
-
           })
           console.log('content', content)
           this.xdropList = content;
           this.xdropTotal = totalElements;
         }
-
         console.log('this.$route', this.$route.query.isToList)
-
       })
     },
     getFileType (url) {

@@ -1,14 +1,17 @@
 <template>
-  <div class="xdrop-detail"
-       v-if="dropInfo">
+  <div class="xdrop-detail">
     <div class="xdrop-back"
          @click="handleBack">
       <img class="_back-icon"
            src="~@assets/img/xdrop/back.png" />
       <span>Back</span>
     </div>
-    <div class="xdrop-dt">
-      <div class="xdrop-dtl">
+    <div class="xdrop-dt"
+         element-loading-spinner="el-icon-loading"
+         element-loading-background="rgba(0, 0, 0, 0.8)"
+         v-loading="loading">
+      <div class="xdrop-dtl"
+           v-if="dropInfo">
         <div class="xdrop-dtlt">
           <div class="xdrop-dic"
                @click="innerVisible = true">
@@ -33,7 +36,8 @@
         <div class="xdrop-dtlm">{{ dropInfo.description }}</div>
       </div>
 
-      <div class="xdrop-dtr">
+      <div class="xdrop-dtr"
+           v-if="dropInfo">
         <div class="xdrop-dtrt">
           <div class="title">
             <img class="_eth"
@@ -176,6 +180,7 @@
                append-to-body>
       <!-- <img :src="dropInfo.minioUrl" class="_nft-asset-full" /> -->
       <nftAssets :nftInfo="dropInfo"
+                 v-if="dropInfo"
                  :isBgImg="false"
                  :isAutoPlay="true" />
     </el-dialog>
@@ -209,22 +214,55 @@ export default {
     };
   },
   mounted () {
-    let dropId = this.$route.params.id
-    console.log('this.$route.params', this.$route.params)
-    let dropInfo = localStorage.getItem('_wex-drop')
-    if (dropId && dropInfo) {
-      dropId = dropId.replace('0xt', '')
-      dropInfo = JSON.parse(dropInfo)
-      console.log('dropInfo', dropInfo, 'dropId', dropId)
-      if (dropInfo.id && dropId === dropInfo.id) {
-        this.dropInfo = dropInfo
-        this.dropId = dropId
-        this.getReservedList()
-      }
-    }
 
+    // let dropInfo = localStorage.getItem('_wex-drop')
+    // if (dropId && dropInfo) {
+    //   dropId = dropId.replace('0xt', '')
+    //   dropInfo = JSON.parse(dropInfo)
+    //   console.log('dropInfo', dropInfo, 'dropId', dropId)
+    //   if (dropInfo.id && dropId === dropInfo.id) {
+    //     this.dropInfo = dropInfo
+    //     this.dropId = dropId
+    //     this.getReservedList()
+    //   }
+    // }
+    this.queryDetail()
   },
   methods: {
+    queryDetail () {
+      let dropId = this.$route.params.id
+      dropId = dropId.replace('0xt', '');
+      this.dropId = dropId;
+      console.log('this.$route.params', this.$route.params)
+      this.loading = true;
+      this.$smAjax({
+        type: 'webx',
+        api: '/airdrop/detail',
+        data: {
+          airdropId: dropId
+        },
+        method: "post",
+        loading: false,
+        app: this,
+        toast: false,
+      }).then(res => {
+        this.loading = false;
+        console.log('res', res)
+        if (res.code == 200) {
+          let dropInfo = res.data;
+
+          const resourceUrl = dropInfo.minioUrl
+          if (resourceUrl)
+            dropInfo.fileType = this.getFileType(resourceUrl)
+          dropInfo.fileValue = resourceUrl
+
+          this.dropInfo = dropInfo;
+
+          this.getReservedList()
+
+        }
+      })
+    },
     toggleReservedOrClaimed (index) {
       this.ReservedOrClaimed = index;
       if (index) {
@@ -256,9 +294,7 @@ export default {
           this.ReservedList = content;
           this.ReservedTotal = totalElements;
         }
-
         document.querySelector("#div_page_index>.body").scrollTop = 100
-
       })
     },
     pageChangeReserved (page) {
@@ -320,6 +356,20 @@ export default {
         URL.revokeObjectURL(elink.href) // 释放URL 对象
         document.body.removeChild(elink)
       })
+    },
+    getFileType (url) {
+      const fileArr = url.split('.')
+      const suffix = (fileArr[fileArr.length - 1]).toLowerCase()
+      let fileType = 'image'
+      switch (suffix) {
+        case 'mp3':
+          fileType = 'audio'
+          break
+        case 'mp4':
+          fileType = 'video'
+          break
+      }
+      return fileType
     },
     handleBack () {
       let query = {
