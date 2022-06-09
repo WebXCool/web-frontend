@@ -14,12 +14,15 @@
       <div class="xdrop-dec"
            @click="handleToDetail">
         <div class="xdrop-title">{{ dropItem.assetTitle }}</div>
-        <div class="avatar-name">
-          <img class="avatar"
-               :src="dropItem.creatorAvatar" />
-          <a class="name"
-             href="#">{{ dropItem.creator }}</a>
-        </div>
+        <a :href="`https://twitter.com/${dropItem.creator}`"
+           @click.stop=""
+           target="_blank">
+          <div class="avatar-name">
+            <img class="avatar"
+                 :src="dropItem.creatorAvatar" />
+            <a class="name">{{ dropItem.creator }}</a>
+          </div>
+        </a>
         <div class="wining-rate">Wining Rate</div>
         <div class="wining-rate-line">
           <span></span>{{ dropItem.rarity[0] === 1 ? '100%' : '100%' }}
@@ -173,6 +176,10 @@ export default {
 }
 .xdrop-dec {
   padding: 0.16rem 0.2rem 0;
+  cursor: pointer;
+  a {
+    display: inline-block;
+  }
 }
 .xdrop-amount {
   display: flex;

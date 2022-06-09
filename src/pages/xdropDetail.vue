@@ -4,7 +4,7 @@
          @click="handleBack">
       <img class="_back-icon"
            src="~@assets/img/xdrop/back.png" />
-      <span>Back</span>
+      <span>More Airdrop</span>
     </div>
     <div class="xdrop-dt"
          element-loading-spinner="el-icon-loading"
@@ -20,12 +20,14 @@
           </div>
           <div class="xdrop-dtltr">
             <div class="xdrop-title">{{ dropInfo.assetTitle }}</div>
-            <div class="avatar-name">
-              <img class="avatar"
-                   :src="dropInfo.creatorAvatar" />
-              <a class="name"
-                 href="#">{{ dropInfo.creator }}</a>
-            </div>
+            <a :href="`https://twitter.com/${dropInfo.creator}`"
+               target="_blank">
+              <div class="avatar-name">
+                <img class="avatar"
+                     :src="dropInfo.creatorAvatar" />
+                <a class="name">{{ dropInfo.creator }}</a>
+              </div>
+            </a>
             <div class="wining-rate">Wining Rate</div>
             <div class="wining-rate-line">
               <span></span>{{ dropInfo.rarity[0] === 1 ? '100%' : '100%' }}
@@ -33,7 +35,23 @@
           </div>
         </div>
 
-        <div class="xdrop-dtlm">{{ dropInfo.description }}</div>
+        <div class="xdrop-dtlm">
+          {{ dropInfo.description||`This NFT was created by 【${dropInfo.creator}】 using WebX, as [#${dropInfo.reservedNum}/${dropInfo.maxSupply}] in the collection. Retweet for a chance to win an NFT airdrop.` }}
+        </div>
+
+        <div class="div-install-text xdrop-dtlm">
+          <p> Congratulations, if you are in winner list!
+            {{dropInfo.creator}} has already sent you [{{dropInfo.assetTitle}}] NFT on Twitter, install webx to claim it & unlock a new 'NFT gallery' on your Twitter profile.
+          </p>
+          <p> Click BACK to discover more events!
+          </p>
+          <p>
+            <a href="http://discord.gg/5Qr3V7QxKH"
+               target="_blank">
+              Get more help in discord
+            </a>
+          </p>
+        </div>
       </div>
 
       <div class="xdrop-dtr"
@@ -42,7 +60,7 @@
           <div class="title">
             <img class="_eth"
                  src="~@assets/img/xdrop/icn_logo@2x.png" />
-            <div class="_title">where's my <i>NFT</i></div>
+            <div class="_title">where's &nbsp;my &nbsp;<i>NFT</i></div>
           </div>
 
           <!-- <img class="_install-btn"
@@ -99,12 +117,16 @@
                 </div>
               </td>
               <td>
-                <div class="xdrop-td-winner">
-                  <span>{{ item.userName }}</span>
-                  <div class="winner-avatar">
-                    <img :src="item.userAvatar" />
+                <a :href="`https://twitter.com/${item.userName}`"
+                   target="_blank">
+                  <div class="xdrop-td-winner">
+                    <span>{{ item.userName }}</span>
+                    <div class="winner-avatar">
+                      <img :src="item.userAvatar" />
+                    </div>
                   </div>
-                </div>
+                </a>
+
               </td>
             </tr>
           </tbody>
@@ -152,10 +174,13 @@
               </td>
               <td>
                 <div class="xdrop-td-winner">
-                  <span>{{ item.userName }}</span>
-                  <div class="winner-avatar">
-                    <img :src="item.userAvatar" />
-                  </div>
+                  <a :href="`https://twitter.com/${item.userName}`"
+                     target="_blank">
+                    <span>{{ item.userName }}</span>
+                    <div class="winner-avatar">
+                      <img :src="item.userAvatar" />
+                    </div>
+                  </a>
                 </div>
               </td>
             </tr>
@@ -475,11 +500,22 @@ export default {
   }
 }
 .xdrop-dtlm {
-  font-size: 0.14rem;
+  font-size: 14px;
   font-family: Sora-Regular, Sora;
   font-weight: 400;
-  color: #7b7c8a;
-  line-height: 0.18rem;
+  line-height: 0.22rem;
+  color: #fff;
+}
+.div-install-text {
+  p {
+    color: #7b7c8a;
+
+    margin-top: 0.1rem;
+  }
+
+  a {
+    color: #4cd6ff;
+  }
 }
 .xdrop-dtrt {
   // display: flex;
@@ -620,6 +656,9 @@ export default {
   overflow: hidden;
   table-layout: fixed;
   border-collapse: separate;
+  a {
+    color: inherit;
+  }
   .export-icon {
     width: 0.2rem;
     height: 0.2rem;
