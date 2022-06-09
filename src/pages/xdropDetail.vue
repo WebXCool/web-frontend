@@ -169,7 +169,7 @@
                   <span>{{ item.assetTitle }}</span>
                 </div>
               </td>
-              <td class="xdrop-td-address">
+              <td class="xdrop-td-address overflow-ellipsis">
                 {{ item.userPublicKey }}
               </td>
               <td>
@@ -319,7 +319,7 @@ export default {
           this.ReservedList = content;
           this.ReservedTotal = totalElements;
         }
-        document.querySelector("#div_page_index>.body").scrollTop = 100
+        // document.querySelector("#div_page_index>.body").scrollTop = 100
       })
     },
     pageChangeReserved (page) {
@@ -416,7 +416,6 @@ export default {
 .xdrop-detail {
   width: 12rem;
   margin: 0 auto 0;
-  padding-top: 0.8rem;
   padding-bottom: 0.76rem;
   .EmptyBox {
     margin-top: 0.4rem;
@@ -676,6 +675,12 @@ export default {
       padding-right: 0.4rem;
     }
   }
+  tbody {
+    td:last-child {
+      text-align: right;
+      padding-right: 0.1rem;
+    }
+  }
   th {
     font-size: 0.2rem;
     font-family: Sora-Medium, Sora;
@@ -718,6 +723,13 @@ export default {
   .xdrop-td-winner {
     display: flex;
     align-items: center;
+    a {
+      display: flex;
+      align-items: center;
+      .winner-avatar {
+        margin-left: 4px;
+      }
+    }
   }
   .user-avatar {
     width: 0.34rem;

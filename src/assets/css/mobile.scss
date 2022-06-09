@@ -26,6 +26,48 @@
 @media screen and (max-width:768px) {
 
     body{
+      .page-home .div-body .buy-list-box div.user-list{
+        height: 818px;
+      }
+      .xdrop-back{
+        margin: 0 0.2rem;
+        padding: 0.2rem 0;
+      }
+      .xdrop-dt{
+        flex-direction: column;
+        margin-bottom: 0.12rem;
+        .xdrop-dtl{
+          margin: 0 0.2rem;
+        }
+        .xdrop-dtr{
+          box-sizing: border-box;
+          width: auto;
+          margin: 0.2rem 0.2rem 0.1rem;
+        }
+      }
+      .xdrop-dmenu{
+        margin: 0 0.2rem 0.1rem;
+      }
+      .xdrop-table{
+        margin: 0 0.2rem;
+        width: 92%;
+        td:last-child, .xdrop-table th:last-child{
+          padding-right: 0.1rem;
+        }
+        .winner-avatar{
+          margin-right: 0;
+          margin-left: 2px;
+        }
+      }
+      #xdrop-list .xdrop-container{
+        width:100%;
+      }
+      .page-home .div-body .buy-list-box .list{
+        height: auto;
+      }
+      .page-home .rank-xdrop-container{
+        display: block;
+      }
       .div_page_index{
         display: block;
         height: auto;

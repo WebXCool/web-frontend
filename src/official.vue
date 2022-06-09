@@ -108,10 +108,7 @@ import drawer from "@base/drawer";
 import { config } from "./config/env";
 import MobileMenu from "components/Layout/MobileMenu.vue";
 
-const smoothScroll = () => {
 
-  document.querySelector("#div_page_index>.body").scrollTo({ top: document.querySelector('.buy-list-box').offsetTop, behavior: 'smooth' })
-}
 export default {
   components: {
     MobileMenu,
@@ -176,7 +173,7 @@ export default {
   },
   methods: {
     scrollToNext () {
-      smoothScroll()
+      document.querySelector(this.isPC ? "#div_page_index>.body" : "#app").scrollTo({ top: document.querySelector('.buy-list-box').offsetTop, behavior: 'smooth' })
     },
     init () {
       this.initGlobal();

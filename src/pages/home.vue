@@ -204,15 +204,15 @@
                v-loading="loading"
                element-loading-spinner="el-icon-loading"
                element-loading-background="rgba(0, 0, 0, 0.8)">
-            <div class="xdrop-list">
+            <div class="xdrop-list"
+                 id="xdrop-list">
               <xdrop-item v-for="item in xdropList"
                           :key="item.id"
                           :drop-item="item"
                           @click="handleToDetail(item)" />
             </div>
           </div>
-          <div class="list bg-cover"
-               style="height: 9.12rem;"
+          <div class="list user-list bg-cover"
                v-if="rankOrXdrop === 1"
                v-loading="loading"
                element-loading-spinner="el-icon-loading"
@@ -435,9 +435,6 @@ import Avatar from "components/Common/Avatar.vue";
 import { format_number } from "../common/js/common";
 
 
-const smoothScroll = () => {
-  document.querySelector("#div_page_index>.body").scrollTo({ top: document.querySelector('.buy-list-box').offsetTop })//, behavior: 'smooth'
-}
 export default {
   name: "app",
   components: {
@@ -497,8 +494,7 @@ export default {
     //this.initChart();
     const { isToList, xdropPage } = this.$route.query
     if (isToList) {
-      // smoothScroll()
-      document.querySelector("#div_page_index>.body").scrollTo({
+      document.querySelector(this.isPC ? '#div_page_index>.body' : '#app').scrollTo({
         top:
           document.querySelector('.buy-list-box').offsetTop + document.querySelector('.buy-list-box>.title').offsetHeight + document.querySelector('.buy-list-box>.tab').offsetHeight
       })
@@ -763,7 +759,9 @@ export default {
       .btn {
         font-size: 0.36rem;
       }
-
+      .user-list {
+        height: 9.12rem;
+      }
       .list {
         width: torem(1000);
         margin: 0 auto;

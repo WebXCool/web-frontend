@@ -30,5 +30,6 @@ export default {
 #app {
   height: 100%;
   overflow: auto;
+  background-color: #040916;
 }
 </style>
