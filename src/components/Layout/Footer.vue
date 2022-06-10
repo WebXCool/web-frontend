@@ -34,14 +34,14 @@
       <div class="item">
         <ul>
           <li>Community</li>
-          <li><a href="https://medium.com/@IPLand.io"
+          <li><a href="https://medium.com/@webx.io"
                target="_bank">Medium</a></li>
-          <li><a href="https://twitter.com/@ipland_io"
+          <li><a href="https://twitter.com/@webx_io"
                target="_bank">Twitter</a></li>
-          <li><a href="https://t.me/ipland_group"
+          <li><a href="https://t.me/webx_group"
                target="_bank">Telegram</a></li>
           <!-- <li><a :href="`${production_system_url}`" target="_bank">Discord</a></li> -->
-          <li><a href="https://www.facebook.com/ipland.io"
+          <li><a href="https://www.facebook.com/webx.io"
                target="_bank">Facebook</a></li>
         </ul>
       </div>

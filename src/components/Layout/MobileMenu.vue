@@ -3,7 +3,7 @@
        class="nav_menus">
     <!-- <div class="div_logo" @click="$router.push({path:'/'})" v-if="isPC">
             <i class="iconfont iconlogo-blue" style="font-size:torem(30);color:#fff;" ></i>
-            <span style="color:#fff;margin-left:torem(6);">iplandetwork</span>
+            <span style="color:#fff;margin-left:torem(6);">webxnetwork</span>
         </div> -->
     <el-menu :default-active="activeMenuIndex"
              class="head_nav_menu"
@@ -16,7 +16,7 @@
       <el-menu-item index="0">
         <div class="item">
           <div class="title">Home</div>
-          <div class="intro">Test ipland developer information</div>
+          <div class="intro">Test webx developer information</div>
         </div>
       </el-menu-item>
       <el-menu-item index="1">
@@ -43,7 +43,7 @@
       <!-- <el-menu-item index="5">
         <div class="item">
           <div class="title">About</div>
-          <div class="intro">Details about the test ipland project</div>
+          <div class="intro">Details about the test webx project</div>
         </div></el-menu-item
       > -->
       <!-- <el-menu-item index="6" v-if="!isPC && accountName">

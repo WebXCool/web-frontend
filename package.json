@@ -1,8 +1,8 @@
 {
-  "name": "ipland",
+  "name": "webx",
   "version": "1.0.0",
   "description": "",
-  "author": "ipland",
+  "author": "webx",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",

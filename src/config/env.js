@@ -2,7 +2,7 @@
 import { zh_CN } from "../assets/locales/locale-zh.js";
 import { en_US } from "../assets/locales/locale-en.js";
 let config = {
-  core_asset: "ipland",
+  core_asset: "webx",
   precision: 18,
   ex_data_api_url: "",
   webx_api_url: 'https://webx.cool/api/webx/v1/twitter/bsctest',

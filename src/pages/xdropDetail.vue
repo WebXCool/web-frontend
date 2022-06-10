@@ -610,7 +610,7 @@ export default {
 
 .xdrop-dmenu {
   width: 3.25rem;
-  justify-content: space-between !important;
+  justify-content: space-between;
   margin-bottom: 0.35rem;
   .div-border {
     display: none;
@@ -621,6 +621,8 @@ export default {
     border-radius: 0.04rem;
     opacity: 0.5;
     border: 1px solid;
+    width: 2.23rem;
+    height: 0.44rem;
     border-image: linear-gradient(
         154deg,
         rgba(32, 220, 254, 1),

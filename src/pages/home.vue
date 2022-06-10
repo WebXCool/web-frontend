@@ -398,24 +398,24 @@
           <img src="../assets/img/media/title.png"
                style="width: 3.7rem" />
           <p>
-            Find more information about IPLand and keep updated from the team.
+            Find more information about webx and keep updated from the team.
           </p>
         </div>
         <div class="list row">
           <div class="col-xs-3">
-            <a href="https://t.me/ipland_group"
+            <a href="https://t.me/webx_group"
                target="_bank"><img src="../assets/img/media/item_1.png" /></a>
           </div>
           <div class="col-xs-3">
-            <a href="https://twitter.com/@ipland_io"
+            <a href="https://twitter.com/@webx_io"
                target="_bank"><img src="../assets/img/media/item_2.png" /></a>
           </div>
           <div class="col-xs-3">
-            <a href="https://medium.com/@IPLand.io"
+            <a href="https://medium.com/@webx.io"
                target="_bank"><img src="../assets/img/media/item_3.png" /></a>
           </div>
           <div class="col-xs-3">
-            <a href="https://www.facebook.com/ipland.io"
+            <a href="https://www.facebook.com/webx.io"
                target="_bank"><img src="../assets/img/media/item_4.png" /></a>
           </div>
         </div>

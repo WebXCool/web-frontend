@@ -1,7 +1,7 @@
 <template>
   <div class="OMenu flex_center">
     <!-- <div class="item">
-        <a class="btn developer_btn flex_center" href="https://docs.ipland.finance/" target="_blank">Document</a>
+        <a class="btn developer_btn flex_center" href="https://docs.webx.finance/" target="_blank">Document</a>
       </div> -->
     <div class="item flex_center"
          v-for="(item,index) in menus"

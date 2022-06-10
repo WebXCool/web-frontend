@@ -26,6 +26,27 @@
 @media screen and (max-width:768px) {
 
     body{
+      ._nft-asset-con > div{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      ._webx-asset-full {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .el-dialog {
+          height: auto;
+          .el-dialog__headerbtn{
+            top:-20px;
+            right: 16px;
+          }
+          ._nft-asset-full{
+            width: 100%;
+            height: auto;
+          }
+        }
+      }
       .page-home .div-body .buy-list-box div.user-list{
         height: 818px;
       }
@@ -46,6 +67,17 @@
         }
       }
       .xdrop-dmenu{
+        // margin: 0 0.2rem 0.1rem;
+        margin: 0;
+      }
+      .xdrop-dtrt .xdrop-dmenu{
+        justify-content: flex-start;
+        padding: 0;
+        img{
+          margin-right: 0.4rem;
+        }
+      }
+      .OMenu.xdrop-dmenu{
         margin: 0 0.2rem 0.1rem;
       }
       .xdrop-table{
@@ -414,7 +446,7 @@
             width:torem(170);
             max-width: torem(170);
         }
-        .ipland_map_menu{
+        .webx_map_menu{
             text-align:left;
             font-size: torem(12);
         }
@@ -1413,7 +1445,7 @@
                 .top{
                     flex-direction: column;
                     margin-bottom: 0.2rem;
-                    .iplandBox{
+                    .webxBox{
                         .div-icon{
                             width: 0.6rem;
                             height: 0.6rem;
@@ -1451,7 +1483,7 @@
                     }
                 }
 
-                .iplandBox{
+                .webxBox{
                     margin-top: 0.1rem;
                     .div-icon{
                         width: 0.6rem;
