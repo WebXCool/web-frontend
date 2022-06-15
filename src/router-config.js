@@ -4,6 +4,10 @@ export default [
     redirect: "/home",
   },
   {
+    path: "/official",
+    redirect: "/home",
+  },
+  {
     path: "/",
     component: (resolve) => require(["./Official.vue"], resolve),
     children: [
