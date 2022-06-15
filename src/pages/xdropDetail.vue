@@ -9,7 +9,7 @@
     <div class="xdrop-dt"
          element-loading-spinner="el-icon-loading"
          element-loading-background="rgba(0, 0, 0, 0.8)"
-         v-loading="loading">
+         v-loading="detailLoading">
       <div class="xdrop-dtl"
            v-if="dropInfo">
         <div class="xdrop-dtlt">
@@ -240,6 +240,7 @@ export default {
       claimedTotal: 0,
       pageSize: 5,
       loading: false,
+      detailLoading: false,
       innerVisible: false
     };
   },
@@ -264,7 +265,7 @@ export default {
       dropId = dropId.replace('0xt', '');
       this.dropId = dropId;
       console.log('this.$route.params', this.$route.params)
-      this.loading = true;
+      this.detailLoading = true;
       this.$smAjax({
         type: 'webx',
         api: '/airdrop/detail',
@@ -276,7 +277,7 @@ export default {
         app: this,
         toast: false,
       }).then(res => {
-        this.loading = false;
+        this.detailLoading = false;
         console.log('res', res)
         if (res.code == 200) {
           let dropInfo = res.data;
@@ -539,7 +540,7 @@ export default {
     margin-bottom: 0;
     display: flex;
     align-items: center;
-    padding: 0 0.08rem;
+    padding: 0 0.04rem;
     > img {
       width: 0.74rem;
       height: 0.24rem;
