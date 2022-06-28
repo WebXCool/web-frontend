@@ -311,7 +311,7 @@
                 <li>WebX Beta launch</li>
                 <li>Launch SocialFi DID aggregator</li>
                 <li>NFT airdrop by retweeting</li>
-                <li>100,000 users acquired</li>
+                <li>A built-in aggregated DeMarketplace</li>
               </ul>
             </div>
           </div>
@@ -323,10 +323,10 @@
               <div class="year">2022</div>
 
               <ul>
-                <li>New social platform expansion</li>
+                <li>Web2 social platform expansion</li>
                 <li>Launch marketplace functionalities</li>
                 <li>Multi-chain adoption</li>
-                <li>500,000 users acquired</li>
+                <li>Launch Genesis Xship NFT</li>
               </ul>
             </div>
           </div>
@@ -338,9 +338,9 @@
               <div class="year">2022</div>
               <ul>
                 <li>WebX SocialFi rewarding system</li>
-                <li>On-chain verification of NfT</li>
+                <li>Listing on exchange</li>
                 <li>Launch plug-in API</li>
-                <li>1 million users acquired</li>
+                <li>User Growth to Earn</li>
               </ul>
             </div>
           </div>
@@ -354,7 +354,7 @@
                 <li>Launch WebX mobile App</li>
                 <li>Launch Platform SDK</li>
                 <li>Expand to more Web2 social platforms</li>
-                <li>5 million users acquired</li>
+                <li>Launch SCD and other collateral systems</li>
               </ul>
             </div>
           </div>
@@ -1772,6 +1772,9 @@ export default {
               font-size: torem(12);
             }
           }
+        }
+        div.list div.active-item ul li {
+          font-size: 0.16rem;
         }
       }
       .conft img {
