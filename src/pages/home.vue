@@ -1765,16 +1765,16 @@ export default {
             margin: 0 auto 0.4rem;
           }
           ul {
-            padding-left: 0.7rem;
+            padding-left: 0.56rem;
             margin: 0 auto;
             display: inline-block;
             li {
-              font-size: torem(12);
+              font-size: torem(16);
             }
           }
         }
         div.list div.active-item ul li {
-          font-size: 0.16rem;
+          font-size: 0.18rem;
         }
       }
       .conft img {
