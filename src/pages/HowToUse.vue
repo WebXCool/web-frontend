@@ -20,8 +20,7 @@
             <div class="content bg-cover">
               <div class="left">
                 <p>1. Install WebX for Chrome.</p>
-                <a :href="$config.webx_down_url"
-                   target="_blank">
+                <a :href="$config.webx_down_url" target="_blank">
                   <img src="../assets/img/how_to_use/btn.png" />
                 </a>
               </div>
@@ -51,11 +50,13 @@
           <div class="v-box-c">
             <div class="v-box">
               <i class="el-icon-loading"></i>
-              <iframe src="https://www.youtube.com/embed/3WEoSQqGEww"
-                      title="INTRUSION.FINANCE"
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen />
+              <iframe
+                src="https://www.youtube.com/embed/RxYojw5F83o"
+                title="INTRUSION.FINANCE"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
               <!-- <video
                                 className="video"
                                 playsInline
@@ -70,8 +71,9 @@
           <img src="../assets/img/how_to_use/use_decorate_arrow_up@2x.png" />
         </div>
       </div>
-      <a href="https://whitepaper.webx.cool/faq"
-         target="_blank">I still need help</a>
+      <a href="https://whitepaper.webx.cool/faq" target="_blank"
+        >I still need help</a
+      >
     </div>
   </div>
 </template>
