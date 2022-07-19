@@ -32,6 +32,10 @@ export default [
     ]
   },
   {
+    path: "/terms-of-services",
+    component: (resolve) => require(["./pages/termsOfServices.vue"], resolve),
+  },
+  {
     path: "/privacy-policy",
     component: (resolve) => require(["./pages/PrivacyPolicy.vue"], resolve),
   }
