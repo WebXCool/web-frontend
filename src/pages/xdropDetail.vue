@@ -30,7 +30,7 @@
             </a>
             <div class="wining-rate">Wining Rate</div>
             <div class="wining-rate-line">
-              <span></span>{{ dropInfo.rarity[0] === 1 ? '100%' : '100%' }}
+              <span></span>{{ dropInfo.hitRate*100 }}%
             </div>
           </div>
         </div>

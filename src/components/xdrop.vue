@@ -25,7 +25,7 @@
         </a>
         <div class="wining-rate">Wining Rate</div>
         <div class="wining-rate-line">
-          <span></span>{{ dropItem.rarity[0] === 1 ? '100%' : '100%' }}
+          <span></span>{{ dropItem.hitRate*100 }}%
         </div>
         <div class="xdrop-amount">
           <div class="amount-item">
