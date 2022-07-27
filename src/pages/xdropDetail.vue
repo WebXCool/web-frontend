@@ -127,7 +127,8 @@
                    target="_blank">
                   <div class="xdrop-td-winner">
                     <span>{{ item.userName }}</span>
-                    <div class="winner-avatar">
+                    <div class="winner-avatar"
+                         v-if="item.userAvatar">
                       <img :src="item.userAvatar" />
                     </div>
                   </div>
@@ -137,11 +138,11 @@
           </tbody>
         </table>
         <empty v-if="!ReservedList.length" />
-        <div class="xdrop-detail-pagination"
-             v-if="ReservedList.length > pageSize">
+        <div class="xdrop-detail-pagination">
           <el-pagination @current-change="pageChangeReserved"
                          layout="prev,pager,next"
                          :total="ReservedTotal"
+                         :page-size="5"
                          :pager-count="5"
                          :current-page.sync="ReservedPage" />
         </div>
@@ -182,7 +183,8 @@
                   <a :href="`https://twitter.com/${item.userName}`"
                      target="_blank">
                     <span>{{ item.userName }}</span>
-                    <div class="winner-avatar">
+                    <div class="winner-avatar"
+                         v-if="item.userAvatar">
                       <img :src="item.userAvatar" />
                     </div>
                   </a>
@@ -193,10 +195,11 @@
         </table>
         <empty v-if="!claimedList.length" />
         <div class="xdrop-detail-pagination"
-             v-if="claimedList.length > pageSize">
+             v-if="claimedTotal > pageSize">
           <el-pagination @current-change="pageChangeClaimed"
                          layout="prev,pager,next"
                          :total="claimedTotal"
+                         :page-size="5"
                          :pager-count="5"
                          :current-page.sync="claimedPage" />
         </div>
