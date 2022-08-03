@@ -510,6 +510,26 @@ export default {
     // console.log('currQuarter', currQuarter)
     this.active_index_road_map = currQuarter - 1;
     this.getXdropList();
+
+
+    window.aplus_queue.push({
+      action: 'aplus.sendPV',
+      arguments: [{
+        is_auto: false
+      }, {
+        browserName: getBrowserName(),
+        page: 'home',
+        host: location.host
+      }]
+    });
+
+    window.aplus_queue.push({
+      action: 'aplus.record',
+      arguments: ['openHome', 'CLK', {
+        browserName: getBrowserName(),
+        host: location.host
+      }]
+    });
   },
   methods: {
 

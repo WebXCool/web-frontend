@@ -76,6 +76,7 @@
 
             <div class="item flex_center active">
               <a :href="$config.webx_down_url"
+                 @click="openWebx"
                  target="_blank"
                  class="btn flex_center">Install WebX to Claim</a>
               <div class="div-border"></div>
@@ -224,6 +225,7 @@
 import OMenu from "components/Layout/OMenu.vue";
 import nftAssets from "components/nftAssets.vue";
 
+
 export default {
   components: {
     OMenu,
@@ -260,20 +262,54 @@ export default {
     //     this.getReservedList()
     //   }
     // }
+
+    let dropId = this.$route.params.id
+    dropId = dropId.replace('0xt', '');
+    this.dropId = dropId;
     this.queryDetail()
+
+    window.aplus_queue.push({
+      action: 'aplus.sendPV',
+      arguments: [{
+        is_auto: false
+      }, {
+        browserName: getBrowserName(),
+        page: 'XDropDetail',
+        dropUrl: `${location.origin}/XDrop/${this.dropId}`
+      }]
+    });
+
+    window.aplus_queue.push({
+      action: 'aplus.record',
+      arguments: ['openXDropDetail', 'CLK', {
+        browserName: getBrowserName(),
+        dropId,
+        dropUrl: `${location.origin}/XDrop/${this.dropId}`
+      }]
+    });
   },
   methods: {
+    openWebx () {
+      window.aplus_queue.push({
+        action: 'aplus.record',
+        arguments: ['clickInstallWebx', 'CLK', {
+          browserName: getBrowserName(),
+          dropId: this.dropId,
+          dropUrl: `${location.origin}/XDrop/${this.dropId}`
+          // screenHeight: screen.height,
+          // screenWidth: screen.width
+        }]
+      });
+    },
     queryDetail () {
-      let dropId = this.$route.params.id
-      dropId = dropId.replace('0xt', '');
-      this.dropId = dropId;
+
       console.log('this.$route.params', this.$route.params)
       this.detailLoading = true;
       this.$smAjax({
         type: 'webx',
         api: '/airdrop/detail',
         data: {
-          airdropId: dropId
+          airdropId: this.dropId
         },
         method: "post",
         loading: false,
